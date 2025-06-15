@@ -8,6 +8,25 @@ def escoger_carta():
     elección_palos = random.randint(0,3)
     elección_números = random.randint(0,12)
 
-    print(f"Salió el {números[elección_números]} de {palos[elección_palos]}")
+    return elección_números
 
-escoger_carta()
+
+def fascistas_cartas():
+
+    valor = 0
+    turno = True
+    while turno:
+        time.sleep(2)
+        if valor == 21:
+            print("Consiguió 21")
+            turno = False
+        elif valor < 21:
+            print("Agarra carta")
+            valor += escoger_carta()
+            print(valor)
+        else:
+            print("El valor se pasó de 21")
+            turno = False
+    print("Hola eduardo")
+
+fascistas_cartas()
