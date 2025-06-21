@@ -12,7 +12,7 @@ def tablero(lista):
     E: Una lista
     S: Una matriz
     R: Lista tipo list (Son las posiciones de los perros y la liebre)
-       Perros: lista[0] hasta lista[5]. Liebre [lista[6],lista[7]]
+       Perros: lista[0] hasta lista[5]. Liebre: [lista[6],lista[7]].
     """
     matriz = []
     fila = []
@@ -20,44 +20,72 @@ def tablero(lista):
 
     #Fila 0
     while i < 9:
-        if i == 2 or i == 6:
-            #Falta pulir
-            """
-            if([lista[0]] + [lista[1]] == [0, 1] or [lista[2]] + [lista[3]] == [0, 1] or
-               [lista[4]] + [lista[5]] == [0, 1] or [lista[0]] + [lista[1]] == [0, 3] or
-               [lista[2]] + [lista[3]] == [0, 3] or [lista[4]] + [lista[5]] == [0, 3]):
-                   fila += ["🐶"]
-                   i += 1
- 
-            elif [lista[6]] + [lista[7]] == [0, 1] or [lista[6]] + [lista[7]] == [0, 3]:
+        if i == 2:
+            if [lista[0]] + [lista[1]] == [0, 1]:
+                fila += ["🐕"]
+                i += 1
+
+            elif [lista[2]] + [lista[3]] == [0, 1]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [0, 1]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [0, 1]:
                 fila += ["🐰"]
                 i += 1
- 
+
             else:
-            """
-            fila += ["🛑"]
-            i += 1
+                fila += ["🛑"]
+                i += 1
+
+        elif i == 6:
+            if [lista[0]] + [lista[1]] == [0, 3]:
+                fila += ["🐕"]
+                i += 1
+
+            elif [lista[2]] + [lista[3]] == [0, 3]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [0, 3]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [0, 3]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+                fila += ["🛑"]
+                i += 1
 
         elif i == 3 or i == 5:
             fila += ["--"]
             i += 1
 
         elif i == 4:
-            #Falta pulir
-            """
-            if(lista[0] + lista[1] == [0, 2] or lista[2] + lista[3] == [0, 2] or
-               lista[4] + lista[5] == [0, 2]):
-                   fila += ["🐶"]
-                   i += 1
- 
-             elif lista[6] + lista[7] == [0, 2]:
-                 fila += ["🐰"]
-                 i += 1
- 
-             else:
-             """
-            fila += ["⬜"]
-            i += 1
+            if [lista[0]] + [lista[1]] == [0, 2]:
+                fila += ["🐕"]
+                i += 1
+
+            elif [lista[2]] + [lista[3]] == [0, 2]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [0, 2]:
+                fila += ["🌭"]
+                i += 1
+
+            elif lista[6] + lista[7] == [0, 2]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+                fila += ["⬜"]
+                i += 1
 
         else:
             fila += ["  "]
@@ -97,13 +125,111 @@ def tablero(lista):
 
     #Fila 2
     while i < 9:
-        if i == 0 or i == 4 or i == 8:
-            fila += ["🛑"]
-            i += 1
+        if i == 0:
+            if [lista[0]] + [lista[1]] == [1, 0]:
+                fila += ["🐕"]
+                i += 1
 
-        elif i == 2 or i == 6:
-            fila += ["⬜"]
-            i += 1
+            elif [lista[2]] + [lista[3]] == [1, 0]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [1, 0]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [1, 0]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+                fila += ["🛑"]
+                i += 1
+
+        elif i == 4:
+            if [lista[0]] + [lista[1]] == [1, 2]:
+                fila += ["🐕"]
+                i += 1
+
+            elif [lista[2]] + [lista[3]] == [1, 2]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [1, 2]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [1, 2]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+                fila += ["🛑"]
+                i += 1
+
+        if i == 8:
+            if [lista[0]] + [lista[1]] == [1, 4]:
+                fila += ["🐕"]
+                i += 1
+
+            elif [lista[2]] + [lista[3]] == [1, 4]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [1, 4]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [1, 4]:
+                fila += ["🐰"]
+               i += 1
+
+            else:
+                fila += ["🛑"]
+                i += 1
+
+        elif i == 2:
+
+            if [lista[0]] + [lista[1]] == [1, 1]:
+                fila += ["🐕"]
+                i += 1
+
+            elif [lista[2]] + [lista[3]] == [1, 1]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [1, 1]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [1, 1]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+                fila += ["⬜"]
+                i += 1
+
+        elif i == 6:
+            if [lista[0]] + [lista[1]] == [1, 3]:
+                fila += ["🐕"]
+                i += 1
+
+            elif [lista[2]] + [lista[3]] == [1, 3]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [1, 3]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [1, 3]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+                fila += ["⬜"]
+                i += 1
 
         else:
             fila += ["--"]
@@ -139,51 +265,81 @@ def tablero(lista):
     fila = []
     i = 0
 
+
     #Fila 4
     while i < 9:
-        if i == 2 or i == 6:
-            #Falta pulir
-            """
-            if([lista[0]] + [lista[1]] == [0, 1] or [lista[2]] + [lista[3]] == [0, 1] or
-               [lista[4]] + [lista[5]] == [0, 1] or [lista[0]] + [lista[1]] == [0, 3] or
-               [lista[2]] + [lista[3]] == [0, 3] or [lista[4]] + [lista[5]] == [0, 3]):
-                   fila += ["🐶"]
-                   i += 1
+        if i == 2:
+            if [lista[0]] + [lista[1]] == [2, 1]:
+                fila += ["🐕"]
+                i += 1
 
-            elif [lista[6]] + [lista[7]] == [0, 1] or [lista[6]] + [lista[7]] == [0, 3]:
+            elif [lista[2]] + [lista[3]] == [2, 1]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [2, 1]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [2, 1]:
                 fila += ["🐰"]
                 i += 1
 
             else:
-            """
-            fila += ["🛑"]
-            i += 1
+                fila += ["🛑"]
+                i += 1
+
+        elif i == 6:
+            if [lista[0]] + [lista[1]] == [2, 3]:
+                fila += ["🐕"]
+                i += 1
+
+            elif [lista[2]] + [lista[3]] == [2, 3]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [2, 3]:
+                fila += ["🌭"]
+                i += 1
+
+            elif [lista[6]] + [lista[7]] == [2, 3]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+                fila += ["🛑"]
+                i += 1
 
         elif i == 3 or i == 5:
             fila += ["--"]
             i += 1
 
         elif i == 4:
-            #Falta pulir
-            """
-            if(lista[0] + lista[1] == [0, 2] or lista[2] + lista[3] == [0, 2] or
-               lista[4] + lista[5] == [0, 2]):
-                   fila += ["🐶"]
-                   i += 1
+            if [lista[0]] + [lista[1]] == [2, 2]:
+                fila += ["🐕"]
+                i += 1
 
-            elif lista[6] + lista[7] == [0, 2]:
+            elif [lista[2]] + [lista[3]] == [2, 2]:
+                fila += ["🐩"]
+                i += 1
+
+            elif [lista[4]] + [lista[5]] == [2, 2]:
+                fila += ["🌭"]
+                i += 1
+
+            elif lista[6] + lista[7] == [2, 2]:
                 fila += ["🐰"]
                 i += 1
 
             else:
-            """
-            fila += ["⬜"]
-            i += 1
+                fila += ["⬜"]
+                i += 1
 
         else:
             fila += ["  "]
             i += 1
 
+    fila += ["\n"]
     matriz += fila
     tablero = ""
     i = 0
@@ -195,6 +351,16 @@ def tablero(lista):
     print(tablero)
     return matriz
 
+
+def movimiento(lista):
+    """
+    Esto hace los movimientos de los anarquistas
+    E: Una lista con todas las posiciones
+    S: Una lista con todas las posiciones
+    R: Lista tipo list. Los últimos dos elementos son la liebre, los primeros 6 los perros
+    """
+    mover = input("¿A cuál de tus compañeros vas a mover?\n" +
+                  "1. 🐕\n2. 🐩\n3. 🌭\n")
 
 
 ##Funciones auxiliares
@@ -213,9 +379,6 @@ def leer(texto):
 
 ##Pruebas
 
-leer("Hola, me llamo Ian y esto es una prueba para ver si la función leer funciona.\n\n")
-tablero([0, 1, 1, 0, 2, 1, 1, 4])
-
 
 ##Juego
 
@@ -228,6 +391,16 @@ def anarquistas_contra_fascistas():
     """
     #Lore()
 
+    posiciones = [0, 1, 1, 0, 2, 1, 1, 4]
+
+    tablero(posiciones)
+
+    seguir = ""
+
+    while seguir != "N" and seguir != "n":
+        movimiento(posiciones)
+
+        seguir = input("¿Seguir?\n") #Solo para pruebas
+
 
 anarquistas_contra_fascistas()
-
