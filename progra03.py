@@ -1,87 +1,233 @@
+##Imports
+
 import random
 import time
 
-def escoger_carta():
-    palos = ["picas","corazones","diamantes","tréboles"]
-    números = [1,2,3,4,5,6,7,8,9,10,11]
-    
-    elección_palos = palos[random.randint(0,3)]
-    elección_números = números[random.randint(0,10)]
 
-    return elección_números,elección_palos
+##Anarquistas contra fascistas: La lucha continua
 
+def tablero(lista):
+    """
+    Esto crea e imprime el tablero
+    E: Una lista
+    S: Una matriz
+    R: Lista tipo list (Son las posiciones de los perros y la liebre)
+       Perros: lista[0] hasta lista[5]. Liebre [lista[6],lista[7]]
+    """
+    matriz = []
+    fila = []
+    i = 0
 
-def asignar_primeras(lista,lista_p):
-    
-    valor = 0
-    valor_obtenido, palo_obtenido = escoger_carta()
-
-
-    for número in range(len(lista)):
-        valor += lista[número]
-    
-    if valor == 21:
-        return lista,lista_p
-    
-    elif valor == 19 or valor == 20:
-        elección = random.randint(1,2)
-        if elección == 1:
-            lista += [valor_obtenido]
-            lista_p += [palo_obtenido]
-        
-    else:
-        if valor < 21:
-            if valor_obtenido == 1:
-                lista += [11]
-                lista_p += [palo_obtenido]
+    #Fila 0
+    while i < 9:
+        if i == 2 or i == 6:
+            #Falta pulir
+            """
+            if([lista[0]] + [lista[1]] == [0, 1] or [lista[2]] + [lista[3]] == [0, 1] or
+               [lista[4]] + [lista[5]] == [0, 1] or [lista[0]] + [lista[1]] == [0, 3] or
+               [lista[2]] + [lista[3]] == [0, 3] or [lista[4]] + [lista[5]] == [0, 3]):
+                   fila += ["🐶"]
+                   i += 1
+ 
+            elif [lista[6]] + [lista[7]] == [0, 1] or [lista[6]] + [lista[7]] == [0, 3]:
+                fila += ["🐰"]
+                i += 1
+ 
             else:
-                lista += [valor_obtenido]
-                lista_p += [palo_obtenido]
+            """
+            fila += ["🛑"]
+            i += 1
+
+        elif i == 3 or i == 5:
+            fila += ["--"]
+            i += 1
+
+        elif i == 4:
+            #Falta pulir
+            """
+            if(lista[0] + lista[1] == [0, 2] or lista[2] + lista[3] == [0, 2] or
+               lista[4] + lista[5] == [0, 2]):
+                   fila += ["🐶"]
+                   i += 1
+ 
+             elif lista[6] + lista[7] == [0, 2]:
+                 fila += ["🐰"]
+                 i += 1
+ 
+             else:
+             """
+            fila += ["⬜"]
+            i += 1
+
         else:
+            fila += ["  "]
+            i += 1
 
-            for número in range(len(lista)):
-                if lista[número] == 11:
-                    lista[número] = 1
-                    
-    return lista,lista_p
-            
-def revisar_especiales(lista):
+    fila += ["\n"]
+    matriz += fila
+    fila = []
+    i = 0
 
-    for carta in range(len(lista)-1):
-        if lista[carta] == 10:
-            elección = random.randint(1,3)
-            if elección == 1:
-                lista[carta] = ["J"]
-            if elección == 2:
-                lista[carta] = ["Q"]
-            if elección == 3:
-                lista[carta] = ["K"]
+    #Fila 1
+    while i < 9:
+        if i == 0:
+            fila += ["  "]
+            i += 1
 
-    return lista
+        elif i == 1 or i == 5:
+            fila += ["⤢ "]
+            i += 1
 
-def juego(lista_f=[],lista_p_f=[],lista_j=[],lista_p_j=[]):
-    if lista_j == []:
-        for carta in range(2):
-            lista_j, lista_p_j = asignar_primeras(lista_j, lista_p_j)
-            lista_f, lista_p_f = asignar_primeras(lista_f, lista_p_f)
-    lista_j = revisar_especiales(lista_j)
-    lista_f = revisar_especiales(lista_f)
-    if lista_f[1] == 11 or lista_f[1] == 1:
-        print(
-            f"La segunda carta de los fascistas es un as de {lista_p_f[1]}")
-    else:   
-        print(
-            f"La segunda carta de los fascistas es un {lista_f[1]} de {lista_p_f[1]}")
-    
-    if lista_j[1] == 11 or lista_j[1] == 1:
-        print(
-            f"La segunda carta del jugador es un as de {lista_p_j[1]}")
-    else:   
-        print(
-            f"La segunda carta del jugador es un {lista_j[1]} de {lista_p_j[1]}")
+        elif i == 3 or i == 7:
+            fila += [" ⤡"]
+            i += 1
 
-    
+        elif i == 8:
+            i += 1
+
+        else:
+            fila += [" ↕"]
+            i += 1
+
+    fila += ["\n"]
+    matriz += fila
+    fila = []
+    i = 0
 
 
+    #Fila 2
+    while i < 9:
+        if i == 0 or i == 4 or i == 8:
+            fila += ["🛑"]
+            i += 1
 
-juego()
+        elif i == 2 or i == 6:
+            fila += ["⬜"]
+            i += 1
+
+        else:
+            fila += ["--"]
+            i += 1
+
+    fila += ["\n"]
+    matriz += fila
+    fila = []
+    i = 0
+
+    #Fila 3
+    while i < 9:
+        if i == 0:
+            fila += ["  "]
+            i += 1
+        elif i == 1 or i == 5:
+            fila += ["⤡ "]
+            i += 1
+
+        elif i == 3 or i == 7:
+            fila += [" ⤢"]
+            i += 1
+
+        elif i == 8:
+            i += 1
+
+        else:
+            fila += [" ↕"]
+            i += 1
+
+    fila += ["\n"]
+    matriz += fila
+    fila = []
+    i = 0
+
+    #Fila 4
+    while i < 9:
+        if i == 2 or i == 6:
+            #Falta pulir
+            """
+            if([lista[0]] + [lista[1]] == [0, 1] or [lista[2]] + [lista[3]] == [0, 1] or
+               [lista[4]] + [lista[5]] == [0, 1] or [lista[0]] + [lista[1]] == [0, 3] or
+               [lista[2]] + [lista[3]] == [0, 3] or [lista[4]] + [lista[5]] == [0, 3]):
+                   fila += ["🐶"]
+                   i += 1
+
+            elif [lista[6]] + [lista[7]] == [0, 1] or [lista[6]] + [lista[7]] == [0, 3]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+            """
+            fila += ["🛑"]
+            i += 1
+
+        elif i == 3 or i == 5:
+            fila += ["--"]
+            i += 1
+
+        elif i == 4:
+            #Falta pulir
+            """
+            if(lista[0] + lista[1] == [0, 2] or lista[2] + lista[3] == [0, 2] or
+               lista[4] + lista[5] == [0, 2]):
+                   fila += ["🐶"]
+                   i += 1
+
+            elif lista[6] + lista[7] == [0, 2]:
+                fila += ["🐰"]
+                i += 1
+
+            else:
+            """
+            fila += ["⬜"]
+            i += 1
+
+        else:
+            fila += ["  "]
+            i += 1
+
+    matriz += fila
+    tablero = ""
+    i = 0
+
+    while i < len(matriz):
+        tablero += matriz[i]
+        i += 1
+
+    print(tablero)
+    return matriz
+
+
+
+##Funciones auxiliares
+
+def leer(texto):
+    """
+    Esto hace que un texto vaya apareciendo poco a poco en pantalla
+    E: Un texto
+    S: Un texto
+    R: Texto tipo str
+    """
+    for letras in texto:
+        print(letras,end="",flush=True)
+        time.sleep(0.025)
+
+
+##Pruebas
+
+leer("Hola, me llamo Ian y esto es una prueba para ver si la función leer funciona.\n\n")
+tablero([0, 1, 1, 0, 2, 1, 1, 4])
+
+
+##Juego
+
+def anarquistas_contra_fascistas():
+    """
+    Esto corre el juego de anarquistas contra fascistas
+    E: Ninguna
+    S: La ejecución del juego
+    R: Ninguna
+    """
+    #Lore()
+
+
+anarquistas_contra_fascistas()
+
