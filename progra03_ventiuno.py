@@ -63,7 +63,7 @@ def juego(lista_f=[],lista_p_f=[],lista_j=[],lista_p_j=[]):
     print(lista_j)
     print(lista_p_j)
     print(contar(lista_j))
-
+    
 
 
 juego()
