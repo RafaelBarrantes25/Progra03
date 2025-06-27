@@ -182,7 +182,7 @@ def tablero(lista):
 
             elif [lista[6]] + [lista[7]] == [1, 4]:
                 fila += ["🐰"]
-               i += 1
+                i += 1
 
             else:
                 fila += ["🛑"]
