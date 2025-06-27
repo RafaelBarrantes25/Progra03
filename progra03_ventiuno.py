@@ -32,13 +32,21 @@ def asignar_primeras(lista,lista_p):
         else:
             lista += [valor_obtenido]
             lista_p += [palo_obtenido]
-
-    else:
-        for número in range(len(lista)):
-            if lista[número] == 11:
-                lista[número] = 1
                     
     return lista,lista_p
+
+
+def convertir_as(lista):
+    """
+    Los as son 11 por defecto
+    si la lista se pasa de 21, busca los as y los convierte en 1 hasta que tenga menos de 21
+    """
+
+    for valor in range(len(lista)-1):
+        if lista[valor] == 11 and contar(lista) > 21:
+            lista[valor] = 1
+
+    return lista
 
 
 
@@ -58,6 +66,8 @@ def contar(lista):
         else:
             contador += lista[valor]
     return contador
+
+
 
 
 
@@ -214,6 +224,10 @@ def juego(lista_f=[],lista_p_f=[],lista_j=[],lista_p_j=[]):
         
         if respuesta == "2" and respuesta_f == 2:
             break
+    
+    lista_j = convertir_as(lista_j)
+    lista_f = convertir_as(lista_f)
+    print(lista_j,lista_f,contar(lista_j),contar(lista_f))
 
     
  
