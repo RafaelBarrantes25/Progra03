@@ -180,6 +180,77 @@ def cpu4(lista_f, lista_p_f):
     return lista_f, lista_p_f, 2
 
 
+def resultados(lista_p,lista_f,lista_p_f,puntos_j,puntos_f):
+    """
+    Revisa si alguno ganó o perdió y devuelve los puntos
+    1 punto: 21 suave, cualquier combinación
+    1 punto: black jack, figura y as
+    2 punto: 5 menores, 21 o menos con 5 cartas sin figuras
+    3 puntos: 5 de rombos, si primera carta es 5 de rombos
+    4 puntos: doble as, 2 as
+    5 puntos: triple 7
+    E: las listas de cartas
+    """
+    if contar(lista_p) < 21 and contar(lista_f) > 21:
+        pass
+    elif contar(lista_p) > 21 and contar(lista_f) < 21:
+        pass
+
+    """
+
+    --------------------------------------------
+    Poner acá uno que revise si tiene 5 cartas y 21 o menos y que dé 2 puntos
+    --------------------------------------------
+
+
+    """
+        
+
+def resultados_aux(lista,lista_p,puntos):
+    """
+    Función auxiliar de resultados para que no quede gigante
+    """
+    aces = 0
+    verificar_figuras = 0
+
+    if lista[0:3] == [7,7,7]:
+        puntos += 5
+        return puntos, 6
+    
+    for carta in range(len(lista)-1):
+        if lista[carta] == 1 or lista[carta] == 11:
+            aces += 1
+
+    if aces == 2:
+        puntos += 4
+        return puntos, 5
+    
+    if lista[0] == 5 and lista_p[0] == "diamantes":
+        puntos += 3
+        return puntos, 4
+    
+    if len(lista) == 5:
+        for carta in range(5):
+            if type(lista[carta]) != str:
+                verificar_figuras += 1
+
+        if verificar_figuras == 5:
+            puntos += 2
+            return puntos,2
+        
+
+    if len(lista) == 2:
+        puntos += 1
+        return puntos,2
+    
+    return puntos,1
+
+        
+
+
+
+
+
 def juego(lista_f=[],lista_p_f=[],lista_j=[],lista_p_j=[]):
     """
     Ejecuta el juego
@@ -227,7 +298,7 @@ def juego(lista_f=[],lista_p_f=[],lista_j=[],lista_p_j=[]):
     
     lista_j = convertir_as(lista_j)
     lista_f = convertir_as(lista_f)
-    print(lista_j,lista_f,contar(lista_j),contar(lista_f))
+   
 
     
  
