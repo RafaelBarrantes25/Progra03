@@ -180,7 +180,7 @@ def cpu4(lista_f, lista_p_f):
     return lista_f, lista_p_f, 2
 
 
-def resultados(lista_p,lista_f,lista_p_f,puntos_j,puntos_f):
+def resultados(lista_j,lista_p_j,lista_f,lista_p_f,puntos_j,puntos_f):
     """
     Revisa si alguno ganó o perdió y devuelve los puntos
     1 punto: 21 suave, cualquier combinación
@@ -190,20 +190,72 @@ def resultados(lista_p,lista_f,lista_p_f,puntos_j,puntos_f):
     4 puntos: doble as, 2 as
     5 puntos: triple 7
     E: las listas de cartas
+    S: los puntos y cuál ganó
+    R: no deberían haber
     """
-    if contar(lista_p) < 21 and contar(lista_f) > 21:
+
+    estado = 0 
+    """
+    Esta variable se usa para comprobar cuál ganó
+    Se le devuelve a la función principal para el mensaje de victoria
+    10: Ganó jugador
+    11: ganó fascistas
+    12: ganaron ambos de la misma forma
+    13: ganaron ambos pero jugador más
+    14: ganaron ambos pero fascista más
+    15: jugador perdió
+    16: fascista perdió
+    17: perdieron ambos
+    """
+    victoria_j = 0 #Se usa para comprobar qué victoria tuvo
+    victoria_f = 0
+
+
+    puntos_j_n = 0  # Mete los puntos nuevos en una variable distinta 
+    puntos_f_n = 0  # antes de sumarlos para saber cuál ganó
+
+    verificar_figuras = 0  # Para ver si cumple 5 menores
+
+
+    if contar(lista_j) == 21:
+        puntos_j_n,victoria_j = resultados_aux(lista_j,lista_p_j)
+
+    if contar(lista_f) == 21:
+        puntos_f_n, victoria_f = resultados_aux(lista_f, lista_p_f)
+
+    if contar(lista_j) < 21:
+        if len(lista_j) == 5:
+            for carta in range(5):
+                if type(lista_j[carta]) != str:
+                    verificar_figuras += 1
+
+        if verificar_figuras == 5:
+            puntos_j_n = 2
+            victoria_j = 2
+        else:
+            puntos_j_n = 1
+            victoria_j = 1
+    verificar_figuras = 0
+
+    if contar(lista_f) < 21:
+        if len(lista_f) == 5:
+            for carta in range(5):
+                if type(lista_f[carta]) != str:
+                    verificar_figuras += 1
+
+        if verificar_figuras == 5:
+            puntos += 2
+            victoria_f = 2
+        else:
+            puntos_f_n = 1
+            victoria_j = 1
+
+
+    if victoria_j == 1 and victoria_f == 1:
         pass
-    elif contar(lista_p) > 21 and contar(lista_f) < 21:
-        pass
 
-    """
+    
 
-    --------------------------------------------
-    Poner acá uno que revise si tiene 5 cartas y 21 o menos y que dé 2 puntos
-    --------------------------------------------
-
-
-    """
         
 
 def resultados_aux(lista,lista_p,puntos):
@@ -298,6 +350,13 @@ def juego(lista_f=[],lista_p_f=[],lista_j=[],lista_p_j=[]):
     
     lista_j = convertir_as(lista_j)
     lista_f = convertir_as(lista_f)
+
+
+    """
+    -------------------------------
+    Hacer una función que imprima las cartas finales
+    -------------------------------
+    """
    
 
     
