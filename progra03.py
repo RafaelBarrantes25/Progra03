@@ -352,15 +352,183 @@ def tablero(lista):
     return matriz
 
 
-def movimiento(lista):
+def movimiento_p(lista):
     """
     Esto hace los movimientos de los anarquistas
     E: Una lista con todas las posiciones
     S: Una lista con todas las posiciones
     R: Lista tipo list. Los últimos dos elementos son la liebre, los primeros 6 los perros
     """
-    mover = input("¿A cuál de tus compañeros vas a mover?\n" +
-                  "1. 🐕\n2. 🐩\n3. 🌭\n")
+    if lista == [0, 1]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Este\n2. Sur-Este\n3. Sur\n")
+
+        if nueva_posición == '1':
+            return [0, 2]
+            
+        elif nueva_posición == '2':
+            return [1, 2]
+            
+        elif nueva_posición == '3':
+            return [1, 1]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+
+    elif lista == [0, 2]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Este\n2. Sur\n")
+                               
+        if nueva_posición == '1':
+            return [0, 3]
+            
+        elif nueva_posición == '2':
+            return [1, 2]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+            
+        
+    elif lista == [0, 3]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Sur-Este\n2. Sur\n")
+                               
+        if nueva_posición == '1':
+            return [1, 4]
+            
+        elif nueva_posición == '2':
+            return [1, 3]
+
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+        
+    elif lista == [1, 0]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Nor-Este\n2. Este\n3. Sur-Este\n")
+                               
+        if nueva_posición == '1':
+            return [0, 1]
+            
+        elif nueva_posición == '2':
+            return [1, 1]
+            
+        elif nueva_posición == '3':
+            return [2, 1]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+        
+    elif lista == [1, 1]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Norte\n2. Este\n3. Sur\n")
+                               
+        if nueva_posición == '1':
+            return [0, 1]
+            
+        elif nueva_posición == '2':
+            return [1, 2]
+            
+        elif nueva_posición == '3':
+            return [2, 1]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+        
+    elif lista == [1, 2]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Norte\n2. Nor-Este\n3. Este\n" +
+                               "4. Sur-Este\n5. Sur\n")
+
+        if nueva_posición == '1':
+            return [0, 2]
+            
+        elif nueva_posición == '2':
+            return [0, 3]
+            
+        elif nueva_posición == '3':
+            return [1, 3]
+            
+        elif nueva_posición == '4':
+            return [2, 3]
+            
+        elif nueva_posición == '5':
+            return [2, 2]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+    
+    elif lista == [1, 3]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Norte\n2. Este\n3. Sur\n")
+                               
+        if nueva_posición == '1':
+            return [0, 3]
+            
+        elif nueva_posición == '2':
+            return [1, 4]
+            
+        elif nueva_posición == '3':
+            return [2, 3]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+        
+    elif lista == [1, 4]:
+        return lista
+        leer("Tu amigo no puede moverse desde ahí\n")
+                               
+        
+    elif lista == [2, 1]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Norte\n2. Nor-Este\n3. Este\n")
+                               
+        if nueva_posición == '1':
+            return [1, 1]
+            
+        elif nueva_posición == '2':
+            return [1, 2]
+            
+        elif nueva_posición == '3':
+            return [2, 2]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+        
+    elif lista == [2, 2]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Norte\n2. Este\n")
+                               
+        if nueva_posición == '1':
+            return [1, 2]
+            
+        elif nueva_posición == '2':
+            return [2, 3]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
+        
+    elif lista == [2, 3]:
+        nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
+                               "1. Norte\n2. Nor-Este\n")
+                               
+        if nueva_posición == '1':
+            return [1, 3]
+            
+        elif nueva_posición == '2':
+            return [1, 4]
+            
+        else:
+            leer('Creo que esa no es una opción\n')
+            movimiento_p(lista)
 
 
 ##Funciones auxiliares
@@ -393,14 +561,61 @@ def anarquistas_contra_fascistas():
 
     posiciones = [0, 1, 1, 0, 2, 1, 1, 4]
 
-    tablero(posiciones)
+    mover = ''
+    fin = 0
 
-    seguir = ""
+    while fin == 0:
+        tablero(posiciones)
+        
+        posición1 = [posiciones[0], posiciones[1]]
+        posición2 = [posiciones[2], posiciones[3]]
+        posición3 = [posiciones[4], posiciones[5]]
+        posición4 = [posiciones[6], posiciones[7]]
 
-    while seguir != "N" and seguir != "n":
-        movimiento(posiciones)
+        while mover != 1 and mover != 2 and mover != 3:
+            mover = input("¿A cuál de tus compañeros vas a mover?\n" +
+                          "1. 🐕\n2. 🐩\n3. 🌭\n")
 
-        seguir = input("¿Seguir?\n") #Solo para pruebas
+            if mover == '1':
+                mover = 1
+            
+            elif mover == '2':
+                mover = 2
+            
+            elif mover == '3':
+                mover = 3
+            
+            else:
+                leer('Responda bien con 1, 2 o 3.\nPor favor.\n\n')
+    
+        if mover == 1:
+            movido = movimiento_p(posición1)
+
+        elif mover == 2:
+            movido = movimiento_p(posición2)
+        
+        elif mover == 3:
+            movido = movimiento_p(posición3)
+            
+        if(movido == posición1 or movido == posición2
+           or movido == posición3):
+            leer('\nCreo que deberíamos intentar otro movimiento\n')
+               
+        elif movido == posición4:
+            leer('\nNo, debemos acercarnos sigilosamente a él\n')
+            
+        else:
+            if mover == 1:
+                posición1 = movido
+                
+            elif mover == 2:
+                posición2 = movido
+                
+            elif mover == 3:
+                posición3 = movido
+            
+        posiciones = posición1 + posición2 + posición3 + posición4
+        mover = ''
 
 
 anarquistas_contra_fascistas()
