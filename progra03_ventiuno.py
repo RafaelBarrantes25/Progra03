@@ -1,20 +1,18 @@
 import random
 import time
 
+
 def escoger_carta():
-    palos = ["picas","corazones","diamantes","tréboles"]
-    números = [1,2,3,4,5,6,7,8,9,"J","Q","K"]
-    
-    elección_palos = palos[random.randint(0,3)]
-    elección_números = números[random.randint(0,10)]
+    palos = ["picas", "corazones", "diamantes", "tréboles"]
+    números = [1, 2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K"]
 
-    return elección_números,elección_palos
+    elección_palos = palos[random.randint(0, 3)]
+    elección_números = números[random.randint(0, 10)]
 
-
+    return elección_números, elección_palos
 
 
-
-def asignar_primeras(lista,lista_p):
+def asignar_primeras(lista, lista_p):
     """
     Se usa para asignar las cartas iniciales al jugador y a los fascistas
     E: lista vacía
@@ -32,8 +30,8 @@ def asignar_primeras(lista,lista_p):
         else:
             lista += [valor_obtenido]
             lista_p += [palo_obtenido]
-                    
-    return lista,lista_p
+
+    return lista, lista_p
 
 
 def convertir_as(lista):
@@ -47,9 +45,6 @@ def convertir_as(lista):
             lista[valor] = 1
 
     return lista
-
-
-
 
 
 def contar(lista):
@@ -68,10 +63,7 @@ def contar(lista):
     return contador
 
 
-
-
-
-def turno_jugador(lista_j,lista_p_j,número):
+def turno_jugador(lista_j, lista_p_j, número):
     """
     Le pide al jugador si quiere agarrar otra carta o no
     E: un input
@@ -80,26 +72,24 @@ def turno_jugador(lista_j,lista_p_j,número):
     """
     while True:
         respuesta = input("¿Quiere agarrar otra carta?\n1. Sí\n2. No\n\n")
-        
+
         if respuesta == "1":
-            asignar_primeras(lista_j,lista_p_j)
+            asignar_primeras(lista_j, lista_p_j)
             if lista_j[número] == 11 or lista_j[número] == 1:
                 print(
-                f"La nueva carta del jugador es un as de {lista_p_j[número]}")
+                    f"La nueva carta del jugador es un as de {lista_p_j[número]}")
                 return lista_j, lista_p_j, respuesta
             else:
                 print(
-                f"La nueva carta del jugador es un {lista_j[número]} de {lista_p_j[número]}")
+                    f"La nueva carta del jugador es un {lista_j[número]} de {lista_p_j[número]}")
                 return lista_j, lista_p_j, respuesta
         elif respuesta == "2":
             return lista_j, lista_p_j, respuesta
         else:
-            print("Esa no es una opción") 
-            
+            print("Esa no es una opción")
 
-    
 
-def cpu1(lista_f,lista_p_f):
+def cpu1(lista_f, lista_p_f):
     """
     Ejecuta el turno de la cpu 1
     - Agarra carta si tiene 18 o menos
@@ -109,22 +99,21 @@ def cpu1(lista_f,lista_p_f):
     valor = contar(lista_f)
 
     if valor <= 18:
-        asignar_primeras(lista_f,lista_p_f)
+        asignar_primeras(lista_f, lista_p_f)
         print("Los fascistas agarraron una carta.")
         return lista_f, lista_p_f, 1
     elif valor == 19 or valor == 20:
-        aleatorio = random.randint(1,2)
+        aleatorio = random.randint(1, 2)
         if aleatorio == 1:
             asignar_primeras(lista_f, lista_p_f)
             print("Los fascistas agarraron una carta.")
-            return lista_f,lista_p_f, 1
+            return lista_f, lista_p_f, 1
         else:
             print("Los fascistas no agarraron otra carta.")
             return lista_f, lista_p_f, 2
     else:
         print("Los fascistas no agarraron otra carta")
         return lista_f, lista_p_f, 2
-
 
 
 def cpu2(lista_f, lista_p_f):
@@ -180,7 +169,7 @@ def cpu4(lista_f, lista_p_f):
     return lista_f, lista_p_f, 2
 
 
-def resultados(lista_j,lista_p_j,lista_f,lista_p_f,puntos_j,puntos_f):
+def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
     """
     Revisa si alguno ganó o perdió y devuelve los puntos
     1 punto: 21 suave, cualquier combinación
@@ -194,7 +183,7 @@ def resultados(lista_j,lista_p_j,lista_f,lista_p_f,puntos_j,puntos_f):
     R: no deberían haber
     """
 
-    estado = 0 
+    estado = 0
     """
     Esta variable se usa para comprobar cuál ganó
     Se le devuelve a la función principal para el mensaje de victoria
@@ -207,18 +196,16 @@ def resultados(lista_j,lista_p_j,lista_f,lista_p_f,puntos_j,puntos_f):
     16: fascista perdió
     17: perdieron ambos
     """
-    victoria_j = 0 #Se usa para comprobar qué victoria tuvo
+    victoria_j = 0  # Se usa para comprobar qué victoria tuvo
     victoria_f = 0
 
-
-    puntos_j_n = 0  # Mete los puntos nuevos en una variable distinta 
+    puntos_j_n = 0  # Mete los puntos nuevos en una variable distinta
     puntos_f_n = 0  # antes de sumarlos para saber cuál ganó
 
     verificar_figuras = 0  # Para ver si cumple 5 menores
 
-
     if contar(lista_j) == 21:
-        puntos_j_n,victoria_j = resultados_aux(lista_j,lista_p_j)
+        puntos_j_n, victoria_j = resultados_aux(lista_j, lista_p_j)
 
     if contar(lista_f) == 21:
         puntos_f_n, victoria_f = resultados_aux(lista_f, lista_p_f)
@@ -250,25 +237,21 @@ def resultados(lista_j,lista_p_j,lista_f,lista_p_f,puntos_j,puntos_f):
             puntos_f_n = 1
             victoria_j = 1
 
-
     if victoria_j == 1 and victoria_f == 1:
         pass
 
-    
 
-        
-
-def resultados_aux(lista,lista_p,puntos):
+def resultados_aux(lista, lista_p, puntos):
     """
     Función auxiliar de resultados para que no quede gigante
     """
     aces = 0
     verificar_figuras = 0
 
-    if lista[0:3] == [7,7,7]:
+    if lista[0:3] == [7, 7, 7]:
         puntos += 5
         return puntos, 6
-    
+
     for carta in range(len(lista)-1):
         if lista[carta] == 1 or lista[carta] == 11:
             aces += 1
@@ -276,11 +259,11 @@ def resultados_aux(lista,lista_p,puntos):
     if aces == 2:
         puntos += 4
         return puntos, 5
-    
+
     if lista[0] == 5 and lista_p[0] == "diamantes":
         puntos += 3
         return puntos, 4
-    
+
     if len(lista) == 5:
         for carta in range(5):
             if type(lista[carta]) != str:
@@ -288,79 +271,96 @@ def resultados_aux(lista,lista_p,puntos):
 
         if verificar_figuras == 5:
             puntos += 2
-            return puntos,2
-        
+            return puntos, 2
 
     if len(lista) == 2:
         puntos += 1
-        return puntos,2
-    
-    return puntos,1
+        return puntos, 2
 
-        
+    return puntos, 1
 
 
+def imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f):
+    print()
+    print("Las cartas del jugador son:")
+    print()
+    for carta in range(0,len(lista_j)):
+        if lista_j[carta] == 1 or lista_j[carta] == 11:
+            print(f"As de {lista_p_j[carta]}")
+        else:
+            print(f"{lista_j[carta]} de {lista_p_j[carta]}")
+
+    print()
+    print("Las cartas de los fascistas son:")
+    print()
+    for carta in range(0,len(lista_f)):
+        if lista_f[carta] == 1 or lista_f[carta] == 11:
+            print(f"As de {lista_p_f[carta]}")
+        else:
+            print(f"{lista_f[carta]} de {lista_p_f[carta]}")
 
 
 
-def juego(lista_f=[],lista_p_f=[],lista_j=[],lista_p_j=[]):
+def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     """
     Ejecuta el juego
     E: las listas de cartas de las distintas funciones
     S: el juego
     R: no deberían haber restricciones
     """
+    puntos_f = 0
+    puntos_j = 0
+    número = 1  # Se usa para imprimir la última carta de la lista
 
-    número = 2 #Se usa para imprimir la última carta de la lista
-
-    if lista_j == []:
-        for carta in range(2):
-            lista_j, lista_p_j = asignar_primeras(lista_j, lista_p_j)
-            lista_f, lista_p_f = asignar_primeras(lista_f, lista_p_f)
-
-    if lista_f[1] == 11 or lista_f[1] == 1:
-        print(
-            f"La segunda carta de los fascistas es un as de {lista_p_f[1]}")
-    else:   
-        print(
-            f"La segunda carta de los fascistas es un {lista_f[1]} de {lista_p_f[1]}")
-    print()
-    if lista_j[1] == 11 or lista_j[1] == 1:
-        print(
-            f"La segunda carta del jugador es un as de {lista_p_j[1]}")
-    else:   
-        print(
-            f"La segunda carta del jugador es un {lista_j[1]} de {lista_p_j[1]}")
-        
-    print()
-    perfiles = [cpu1, cpu2, cpu3, cpu4]
-    índice = random.randint(0,3)
-    perfil = perfiles[índice]
-    
     while True:
-        
-        lista_j,lista_p_j,respuesta = turno_jugador(lista_j,lista_p_j,número)
-        lista_f,lista_p_f,respuesta_f = perfil(lista_f,lista_p_f)
-        
-        if respuesta == "1":
-            número += 1
-        
-        if respuesta == "2" and respuesta_f == 2:
-            break
-    
-    lista_j = convertir_as(lista_j)
-    lista_f = convertir_as(lista_f)
+        lista_j = []
+        lista_f = []
+        lista_p_f = []
+        lista_p_j = []
+        if lista_j == []:
+            for carta in range(2):
+                lista_j, lista_p_j = asignar_primeras(lista_j, lista_p_j)
+                lista_f, lista_p_f = asignar_primeras(lista_f, lista_p_f)
+
+        if lista_f[1] == 11 or lista_f[1] == 1:
+            print(
+                f"La segunda carta de los fascistas es un as de {lista_p_f[1]}")
+        else:
+            print(
+                f"La segunda carta de los fascistas es un {lista_f[1]} de {lista_p_f[1]}")
+        print()
+        if lista_j[1] == 11 or lista_j[1] == 1:
+            print(
+                f"La segunda carta del jugador es un as de {lista_p_j[1]}")
+        else:
+            print(
+                f"La segunda carta del jugador es un {lista_j[1]} de {lista_p_j[1]}")
+
+        print()
+        perfiles = [cpu1, cpu2, cpu3, cpu4]
+        índice = random.randint(0, 3)
+        perfil = perfiles[índice]
+
+        while True:
+
+            lista_j, lista_p_j, respuesta = turno_jugador(
+                lista_j, lista_p_j, número)
+            lista_f, lista_p_f, respuesta_f = perfil(lista_f, lista_p_f)
+
+            if respuesta == "1":
+                número += 1
+
+            print(f"{número} hola")
+            print(f"{lista_j} hola")
+            if respuesta == "2" and respuesta_f == 2:
+                break
+
+        lista_j = convertir_as(lista_j)
+        lista_f = convertir_as(lista_f)
 
 
-    """
-    -------------------------------
-    Hacer una función que imprima las cartas finales
-    -------------------------------
-    """
-   
+        imprimir_finales(lista_j,lista_p_j,lista_f,lista_p_f)
 
-    
- 
 
 
 
