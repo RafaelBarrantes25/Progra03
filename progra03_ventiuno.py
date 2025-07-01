@@ -40,7 +40,7 @@ def convertir_as(lista):
     si la lista se pasa de 21, busca los as y los convierte en 1 hasta que tenga menos de 21
     """
 
-    for valor in range(len(lista)-1):
+    for valor in range(0, len(lista)-1):
         if lista[valor] == 11 and contar(lista) > 21:
             lista[valor] = 1
 
@@ -55,7 +55,7 @@ def contar(lista):
     R: no deberían haber
     """
     contador = 0
-    for valor in range(len(lista)):
+    for valor in range(0, len(lista)):
         if type(lista[valor]) == str:
             contador += 10
         else:
@@ -183,19 +183,6 @@ def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
     R: no deberían haber
     """
 
-    estado = 0
-    """
-    Esta variable se usa para comprobar cuál ganó
-    Se le devuelve a la función principal para el mensaje de victoria
-    10: Ganó jugador
-    11: ganó fascistas
-    12: ganaron ambos de la misma forma
-    13: ganaron ambos pero jugador más
-    14: ganaron ambos pero fascista más
-    15: jugador perdió
-    16: fascista perdió
-    17: perdieron ambos
-    """
     victoria_j = 0  # Se usa para comprobar qué victoria tuvo
     victoria_f = 0
 
@@ -238,7 +225,25 @@ def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
             victoria_j = 1
 
     if victoria_j == 1 and victoria_f == 1:
-        pass
+        if contar(lista_j) > contar(lista_f):
+
+            puntos_f_n = 0
+            puntos_j_n = 1
+        elif contar(lista_j) < contar(lista_f):
+
+            puntos_f_n = 1
+            puntos_j_n = 0
+
+    if contar(lista_j) > 21:
+        victoria_j = 0
+    if contar(lista_f) > 21:
+        victoria_f = 0
+
+
+    puntos_f += puntos_f_n
+    puntos_j += puntos_j_n
+
+    return puntos_j, puntos_f, victoria_j, victoria_f
 
 
 def resultados_aux(lista, lista_p, puntos):
@@ -252,7 +257,7 @@ def resultados_aux(lista, lista_p, puntos):
         puntos += 5
         return puntos, 6
 
-    for carta in range(len(lista)-1):
+    for carta in range(0, len(lista)-1):
         if lista[carta] == 1 or lista[carta] == 11:
             aces += 1
 
@@ -284,7 +289,7 @@ def imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f):
     print()
     print("Las cartas del jugador son:")
     print()
-    for carta in range(0,len(lista_j)):
+    for carta in range(0, len(lista_j)):
         if lista_j[carta] == 1 or lista_j[carta] == 11:
             print(f"As de {lista_p_j[carta]}")
         else:
@@ -293,12 +298,11 @@ def imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f):
     print()
     print("Las cartas de los fascistas son:")
     print()
-    for carta in range(0,len(lista_f)):
+    for carta in range(0, len(lista_f)):
         if lista_f[carta] == 1 or lista_f[carta] == 11:
             print(f"As de {lista_p_f[carta]}")
         else:
             print(f"{lista_f[carta]} de {lista_p_f[carta]}")
-
 
 
 def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
@@ -350,18 +354,40 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
             if respuesta == "1":
                 número += 1
 
-            print(f"{número} hola")
-            print(f"{lista_j} hola")
             if respuesta == "2" and respuesta_f == 2:
                 break
 
         lista_j = convertir_as(lista_j)
         lista_f = convertir_as(lista_f)
 
+        imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f)
 
-        imprimir_finales(lista_j,lista_p_j,lista_f,lista_p_f)
+        print()
+
+        print(f"Las cartas del jugador suman {contar(lista_j)}")
+
+        print()
+
+        print(f"Las cartas de los fascistas suman {contar(lista_f)}")
+
+
+
 
 
 
 
 juego()
+
+
+"""
+    Esta variable se usa para comprobar cuál ganó
+    Se le devuelve a la función principal para el mensaje de victoria
+    10: Ganó jugador
+    11: ganó fascistas
+    12: ganaron ambos de la misma forma
+    13: ganaron ambos pero jugador más
+    14: ganaron ambos pero fascista más
+    15: jugador perdió
+    16: fascista perdió
+    17: perdieron ambos
+"""
