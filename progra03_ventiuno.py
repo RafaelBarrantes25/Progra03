@@ -364,7 +364,39 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
 
     return puntos_f, puntos_j
 
-            
+
+"""
+H
+A
+C
+E
+R
+
+L
+A
+
+F
+U
+N
+C
+I
+Ó
+N
+
+F
+I
+N
+
+D
+E
+L
+
+J
+U
+E
+G
+O
+"""            
 
 
 def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
@@ -439,6 +471,18 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
         
         puntos_f, puntos_j = mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f)
 
+
+        volver_a_jugar = input("¿Quiere jugar de nuevo?\n1. Sí\n2. No\n")
+        loop = True
+        while loop:
+            if volver_a_jugar == "1":
+                loop = False
+                break
+            elif volver_a_jugar == "2":
+
+                fin_del_juego(puntos_j,puntos_f)
+            else:
+                print("Esa no es una opción.")
         
 
         
