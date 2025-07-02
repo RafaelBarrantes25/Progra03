@@ -74,17 +74,18 @@ def turno_jugador(lista_j, lista_p_j, número):
         respuesta = input("¿Quiere agarrar otra carta?\n1. Sí\n2. No\n\n")
 
         if respuesta == "1":
+            número += 1
             asignar_primeras(lista_j, lista_p_j)
             if lista_j[número] == 11 or lista_j[número] == 1:
                 print(
                     f"La nueva carta del jugador es un as de {lista_p_j[número]}")
-                return lista_j, lista_p_j, respuesta
+                return lista_j, lista_p_j, respuesta, número
             else:
                 print(
                     f"La nueva carta del jugador es un {lista_j[número]} de {lista_p_j[número]}")
-                return lista_j, lista_p_j, respuesta
+                return lista_j, lista_p_j, respuesta, número
         elif respuesta == "2":
-            return lista_j, lista_p_j, respuesta
+            return lista_j, lista_p_j, respuesta, número
         else:
             print("Esa no es una opción")
 
@@ -192,10 +193,10 @@ def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
     verificar_figuras = 0  # Para ver si cumple 5 menores
 
     if contar(lista_j) == 21:
-        puntos_j_n, victoria_j = resultados_aux(lista_j, lista_p_j)
+        puntos_j_n, victoria_j = resultados_aux(lista_j, lista_p_j,puntos_j)
 
     if contar(lista_f) == 21:
-        puntos_f_n, victoria_f = resultados_aux(lista_f, lista_p_f)
+        puntos_f_n, victoria_f = resultados_aux(lista_f, lista_p_f,puntos_f)
 
     if contar(lista_j) < 21:
         if len(lista_j) == 5:
@@ -224,21 +225,12 @@ def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
             puntos_f_n = 1
             victoria_j = 1
 
-    if victoria_j == 1 and victoria_f == 1:
-        if contar(lista_j) > contar(lista_f):
 
-            puntos_f_n = 0
-            puntos_j_n = 1
-        elif contar(lista_j) < contar(lista_f):
-
-            puntos_f_n = 1
-            puntos_j_n = 0
 
     if contar(lista_j) > 21:
         victoria_j = 0
     if contar(lista_f) > 21:
         victoria_f = 0
-
 
     puntos_f += puntos_f_n
     puntos_j += puntos_j_n
@@ -270,7 +262,7 @@ def resultados_aux(lista, lista_p, puntos):
         return puntos, 4
 
     if len(lista) == 5:
-        for carta in range(5):
+        for carta in range(0,len(lista)):
             if type(lista[carta]) != str:
                 verificar_figuras += 1
 
@@ -280,12 +272,19 @@ def resultados_aux(lista, lista_p, puntos):
 
     if len(lista) == 2:
         puntos += 1
-        return puntos, 2
-
-    return puntos, 1
+        return puntos, 3
+    
+    puntos += 1
+    return puntos, 8
 
 
 def imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f):
+    """
+    Imprime la lista de cartas finales
+    E: las listas de cartas
+    S: las cartas finales
+    R: no deberían haber
+    """
     print()
     print("Las cartas del jugador son:")
     print()
@@ -305,6 +304,69 @@ def imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f):
             print(f"{lista_f[carta]} de {lista_p_f[carta]}")
 
 
+def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
+    """
+    Imprime el mensaje de victoria y muestra los puntos
+    E: victoria de cada uno y los puntos
+    S: mensaje de victoria y puntos
+    R: no
+    """
+
+    if victoria_j == 0:
+        print("El jugador se pasó de 21, no gana puntos.")
+    elif victoria_j == 1: 
+        puntos_j -= 1
+        print("El jugador tuvo menos de 21, no gana puntos.")
+    elif victoria_j == 2:
+        print("El jugador ganó con 5 o más cartas sin figuras. Gana 2 puntos.")
+    elif victoria_j == 3:
+        print("El jugador ganó con Black Jack. Gana 1 punto.")
+    elif victoria_j == 4:
+        print("El jugador ganó con un 5 de rombos como primera carta. Gana 3 puntos.")
+    elif victoria_j == 5:
+        print("El jugador ganó con Doble As. Gana 4 puntos.")
+    elif victoria_j == 6:
+        print("El jugador ganó con triple 7. Gana 5 puntos.")
+    elif victoria_j == 8:
+        print("El jugador ganó con 21 sin ningún bonus. Gana 1 punto.")
+    else: 
+        print("Error01")
+
+
+    print()
+
+    if victoria_f == 0:
+        print("Los fascistas se pasaron de 21, no ganaron puntos.")
+    elif victoria_f == 1:
+        puntos_f -= 1
+        print("Los fascistas tuvieron menos de 21, no ganan puntos.")
+    elif victoria_f == 2:
+        print("Los fascistas ganaron con 5 o más cartas sin figuras. Ganan 2 puntos.")
+    elif victoria_f == 3:
+        print("Los fascistas ganaron con Black Jack. Ganan 1 punto.")
+    elif victoria_f == 4:
+        print("Los fascistas ganaron con un 5 de rombos como primera carta. Ganan 3 puntos.")
+    elif victoria_f == 5:
+        print("Los fascistas ganaron con Doble As. Ganan 4 puntos.")
+    elif victoria_f == 6:
+        print("Los fascistas ganaron con triple 7. Ganan 5 puntos.")
+    elif victoria_f == 8:
+        print("Los fascistas ganaron con 21 sin ningún bonus. Ganan 1 punto.")
+    else:
+        print("Error02")
+
+    print()
+
+    print("Puntos anarquistas   |   Puntos fascistas")
+    print(f"     {puntos_j}                    {puntos_f} ")
+    print()
+    print()
+
+    return puntos_f, puntos_j
+
+            
+
+
 def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     """
     Ejecuta el juego
@@ -314,13 +376,16 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     """
     puntos_f = 0
     puntos_j = 0
-    número = 1  # Se usa para imprimir la última carta de la lista
+    número = 1
 
     while True:
+        # Se usa para imprimir la última carta de la lista
         lista_j = []
         lista_f = []
         lista_p_f = []
         lista_p_j = []
+        victoria_j = 0
+        victoria_f = 0
         if lista_j == []:
             for carta in range(2):
                 lista_j, lista_p_j = asignar_primeras(lista_j, lista_p_j)
@@ -347,13 +412,12 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
 
         while True:
 
-            lista_j, lista_p_j, respuesta = turno_jugador(
+            lista_j, lista_p_j, respuesta, número_n = turno_jugador(
                 lista_j, lista_p_j, número)
             lista_f, lista_p_f, respuesta_f = perfil(lista_f, lista_p_f)
 
             if respuesta == "1":
-                número += 1
-
+                número = número_n
             if respuesta == "2" and respuesta_f == 2:
                 break
 
@@ -370,24 +434,15 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
 
         print(f"Las cartas de los fascistas suman {contar(lista_f)}")
 
+        puntos_j, puntos_f, victoria_j, victoria_f = resultados(
+            lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f)
+        
+        puntos_f, puntos_j = mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f)
 
+        
 
-
-
+        
 
 
 juego()
 
-
-"""
-    Esta variable se usa para comprobar cuál ganó
-    Se le devuelve a la función principal para el mensaje de victoria
-    10: Ganó jugador
-    11: ganó fascistas
-    12: ganaron ambos de la misma forma
-    13: ganaron ambos pero jugador más
-    14: ganaron ambos pero fascista más
-    15: jugador perdió
-    16: fascista perdió
-    17: perdieron ambos
-"""
