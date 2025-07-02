@@ -79,7 +79,7 @@ def tablero(lista):
                 fila += ["🌭"]
                 i += 1
 
-            elif lista[6] + lista[7] == [0, 2]:
+            elif [lista[6]] + [lista[7]] == [0, 2]:
                 fila += ["🐰"]
                 i += 1
 
@@ -327,7 +327,7 @@ def tablero(lista):
                 fila += ["🌭"]
                 i += 1
 
-            elif lista[6] + lista[7] == [2, 2]:
+            elif [lista[6]] + [lista[7]] == [2, 2]:
                 fila += ["🐰"]
                 i += 1
 
@@ -348,16 +348,56 @@ def tablero(lista):
         tablero += matriz[i]
         i += 1
 
+    print("\nVista del dron:\n")
     print(tablero)
     return matriz
 
 
+def lore():
+    """
+    Esto narra el lore del juego
+    E: Ninguna
+    S: Mucho texto
+    R: Ninguna
+    """
+    leer("Hola de nuevo compañero anarquista, ya hace más de un mes que"
+         + " vencimos\na los fascistas en nuestra carrera para decidir" 
+         + " las políticas de\nnuestro nuevo mundo. Aunque por " +
+         "supuesto te llamamos porque tenemos una\nnueva misión.\n")
+         
+    input("\nPRESIONA ENTER PARA CONTINUAR\n")
+    
+    leer("Si bien la gran mayoría de los fascistas que vencimos" + 
+         " admitieron\nla derrota, recientemente de nuestra red de " +
+         "información nos llegó\nla noticia de que un fascista radical"
+         + " está perturbando la paz por\nla zona de San Ramón y " +
+         "Palmares de Alajuela.\n")
+         
+    input("\nPRESIONA ENTER PARA CONTINUAR\n")
+    
+    leer("El plan es que enviaremos a Rafael, Ian y Eduardo allí para" +
+         "que traten de\ncapturarlo pacíficamente mientras tú los guías"
+         + " con ayuda de un dron\nfuturista. Pero te advierto que " +
+         "como buenos anarquistas\nno van a retroceder, literalmente.\n"
+         )
+         
+    input("\n¿Estás listo?\n1. ¡Vamos!\n2. Si\n")
+    
+    leer("\nQue bueno\n\nEn tu pantalla saldrá el mapa del distrito " +
+         "donde está el fascista junto\ncon su ubicación representada "
+         + "por una liebre (🐰). Además de las ubicaciones\nde nuestros"
+         + " compañeros representadas de la siguiente manera:\n" +
+         "🐕: Rafael\n🐩: Ian\n🌭: Eduardo\n\nBuena suerte.\n")
+         
+    input("\nPRESIONA ENTER PARA CONTINUAR\n")
+    
+
 def movimiento_p(lista):
     """
     Esto hace los movimientos de los anarquistas
-    E: Una lista con todas las posiciones
-    S: Una lista con todas las posiciones
-    R: Lista tipo list. Los últimos dos elementos son la liebre, los primeros 6 los perros
+    E: Una lista
+    S: Una lista
+    R: Lista tipo list. La lista tiene la posición de uno de los perros
     """
     if lista == [0, 1]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
@@ -374,7 +414,7 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
 
     elif lista == [0, 2]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
@@ -388,7 +428,7 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
             
         
     elif lista == [0, 3]:
@@ -403,7 +443,7 @@ def movimiento_p(lista):
 
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
         
     elif lista == [1, 0]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
@@ -420,7 +460,7 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
         
     elif lista == [1, 1]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
@@ -437,7 +477,7 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
         
     elif lista == [1, 2]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
@@ -461,7 +501,7 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
     
     elif lista == [1, 3]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
@@ -478,7 +518,7 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
         
     elif lista == [1, 4]:
         return lista
@@ -500,7 +540,7 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
         
     elif lista == [2, 2]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
@@ -514,7 +554,7 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
         
     elif lista == [2, 3]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
@@ -528,8 +568,51 @@ def movimiento_p(lista):
             
         else:
             leer('Creo que esa no es una opción\n')
-            movimiento_p(lista)
+            return movimiento_p(lista)
+            
 
+def final(bando):
+    """
+    Esto da el final del juego según quien haya ganado
+    E: Un texto ('anarquista' o 'fascista')
+    S: Un número
+    R: Texto tipo str. Todo en minúsculas
+    """
+    if bando == 'anarquista':
+        leer("\nFelicidades!\n" +
+             "Hemos logrado capturar al fascista de manera pacífica\n" +
+             "[Falta agregar]\n")
+    
+    elif bando == 'fascista':
+        leer("\nLamentablemente el fascista se nos escapó, pero eso no" +
+             " importa.\nUno de nuestros compañeros vio hacia donde" +
+             " se fue.\nAún estamos a tiempo de seguirlo y atraparlo." +
+             "\n¡NO DEBEMOS RENDIRNOS!\n\n")
+             
+        seguir = 'a'
+
+        while seguir != '':
+            seguir = input("¿Quieres intentarlo de nuevo?\n" +
+                           "1. Si\n2. No\n")
+            if seguir == '1':
+                leer("\nBien, posicionemonos rápidamente e " +
+                     "intentemos capturarlo de nuevo.\n")
+                return 0
+                    
+            elif seguir == '2':
+                leer("\nOh...\nEntiendo... Supongo que tienes cosas" +
+                     " que hacer.\nSi quieres volver a ayudarnos," +
+                     " aquí estaremos en la lucha por el futuro.")
+                return 1
+                    
+                    
+            else:
+                leer("\nLo siento, no entendí, ¿Si o no?\n\n")
+    
+    else:
+        print('Error: Final no dado correctamente')
+    
+    
 
 ##Funciones auxiliares
 
@@ -545,6 +628,26 @@ def leer(texto):
         time.sleep(0.025)
 
 
+def pertenece(lista1, lista2):
+    """
+    Esto dice si una lista está dentro de otra lista
+    E: Dos listas
+    S: True or False
+    R: Ambas tipo list. lista2 es una lista de listas
+    """
+    if type(lista1) != list or type(lista2) != list:
+        print('Error: No es list en pertenece')
+
+    for listas in lista2:
+        if type(listas) != list:
+            print('Error: Elementos lista2 no son listas en pertenece')
+
+        elif lista1 == listas:
+            return True
+            
+    return False
+
+
 ##Pruebas
 
 
@@ -557,65 +660,133 @@ def anarquistas_contra_fascistas():
     S: La ejecución del juego
     R: Ninguna
     """
-    #Lore()
+    #lore()
+
+    posiciones_válidas = [[0, 1], [0, 2], [0, 3],
+                          [1, 0], [1, 1], [1, 2], [1, 3], [1, 4],
+                          [2, 1], [2, 2], [2, 3]]
+                          
+    octágonos = [[0, 1], [0, 3], [1, 0], [1, 2], [1, 4], [2, 1], [2, 3]]
+                          
+    cuadrados = [[0, 2], [1, 1], [1, 3], [2, 2]]
+                            
 
     posiciones = [0, 1, 1, 0, 2, 1, 1, 4]
 
-    mover = ''
     fin = 0
 
     while fin == 0:
-        tablero(posiciones)
-        
+        fin_perros = 0
+        mover = ''
         posición1 = [posiciones[0], posiciones[1]]
         posición2 = [posiciones[2], posiciones[3]]
         posición3 = [posiciones[4], posiciones[5]]
         posición4 = [posiciones[6], posiciones[7]]
 
-        while mover != 1 and mover != 2 and mover != 3:
-            mover = input("¿A cuál de tus compañeros vas a mover?\n" +
-                          "1. 🐕\n2. 🐩\n3. 🌭\n")
+        tablero(posiciones)
 
-            if mover == '1':
-                mover = 1
+        if(posición4[1] <= posición1[1] and posición4[1] <= posición2[1]
+           and posición4[1] <= posición3[1]):
+            fin = final('fascista')
+            if fin == 0:
+                posiciones = [0, 1, 1, 0, 2, 1, 1, 4]
+                posición1 = [posiciones[0], posiciones[1]]
+                posición2 = [posiciones[2], posiciones[3]]
+                posición3 = [posiciones[4], posiciones[5]]
+                posición4 = [posiciones[6], posiciones[7]]
+                tablero(posiciones)
             
-            elif mover == '2':
-                mover = 2
+            elif fin == 1:
+                fin_perros = 1
+
             
-            elif mover == '3':
-                mover = 3
+        """
+        elif :
+            fin = final('anarquista')
+        """ 
+
+        #Movimiento perros
+        while fin_perros != 1:
+            while mover != 1 and mover != 2 and mover != 3:
+                mover = input("¿A cuál de tus compañeros vas a mover?\n"
+                              + "1. 🐕\n2. 🐩\n3. 🌭\n")
+
+                if mover == '1':
+                    mover = 1
             
-            else:
-                leer('Responda bien con 1, 2 o 3.\nPor favor.\n\n')
+                elif mover == '2':
+                    mover = 2
+            
+                elif mover == '3':
+                    mover = 3
+            
+                else:
+                    leer('\nResponda bien con 1, 2 o 3.' +
+                         '\nPor favor.\n\n')
     
-        if mover == 1:
-            movido = movimiento_p(posición1)
-
-        elif mover == 2:
-            movido = movimiento_p(posición2)
-        
-        elif mover == 3:
-            movido = movimiento_p(posición3)
-            
-        if(movido == posición1 or movido == posición2
-           or movido == posición3):
-            leer('\nCreo que deberíamos intentar otro movimiento\n')
-               
-        elif movido == posición4:
-            leer('\nNo, debemos acercarnos sigilosamente a él\n')
-            
-        else:
             if mover == 1:
-                posición1 = movido
-                
+                movido = movimiento_p(posición1)
+
             elif mover == 2:
-                posición2 = movido
-                
+                movido = movimiento_p(posición2)
+        
             elif mover == 3:
-                posición3 = movido
+                movido = movimiento_p(posición3)
             
+            if(movido == posición1 or movido == posición2
+               or movido == posición3):
+                leer('\nCreo que deberíamos intentar otro movimiento\n\n')
+                mover = ''
+               
+            elif movido == posición4:
+                leer('\nNo, debemos acercarnos sigilosamente a él\n')
+                mover == ''
+        
+            else:
+                if mover == 1:
+                    posición1 = movido
+                    fin_perros = 1
+                
+                elif mover == 2:
+                    posición2 = movido
+                    fin_perros = 1
+                
+                elif mover == 3:
+                    posición3 = movido
+                    fin_perros = 1
+                
+        #Movimiento de la liebre
+        libre = 0
+            
+        while libre != 1:
+            if pertenece(posición4, octágonos) == True:
+                movido = [posición4[0] + random.randint(-1, 1),
+                          posición4[1] + random.randint(-1, 1)]
+                
+                          
+            dirección = random.randint(0, 1)
+            if(pertenece(posición4, cuadrados) == True and
+               dirección == 0):
+                movido = [posición4[0],
+                          posición4[1] + random.randint(-1, 1)]
+                          
+            elif(pertenece(posición4, cuadrados) == True and
+                 dirección == 1):
+                movido = [posición4[0] + random.randint(-1, 1),
+                          posición4[1]]
+                
+            if pertenece(movido, posiciones_válidas) != True:
+                libre = 0
+        
+            elif(movido == posición1 or movido == posición2 or
+                movido == posición3 or movido == posición4):
+                libre = 0
+                
+            else:
+                posición4 = movido
+                libre = 1
+                
         posiciones = posición1 + posición2 + posición3 + posición4
-        mover = ''
 
 
 anarquistas_contra_fascistas()
