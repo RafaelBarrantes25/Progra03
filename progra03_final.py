@@ -1292,7 +1292,7 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     S: el juego
     R: no deberían haber restricciones
     """
-    
+
     puntos_f = 0
     puntos_j = 0
 
@@ -1380,7 +1380,7 @@ def transición(número):
     """
     Esto hace la transición del primer juego al segundo
     E: Un número
-    S: El 21 
+    S: El 21
     R: Número 1 o 2
     """
     if número == 1:
@@ -1425,8 +1425,5 @@ def transición(número):
             else:
                 leer('\n\nOk pero, ¿vas a jugar o no?\n')
 
-veintiuno()
-#anarquistas_contra_fascistas()
 
-
-
+anarquistas_contra_fascistas()
