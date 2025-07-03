@@ -193,10 +193,10 @@ def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
     verificar_figuras = 0  # Para ver si cumple 5 menores
 
     if contar(lista_j) == 21:
-        puntos_j_n, victoria_j = resultados_aux(lista_j, lista_p_j,puntos_j)
+        puntos_j_n, victoria_j = resultados_aux(lista_j, lista_p_j, puntos_j)
 
     if contar(lista_f) == 21:
-        puntos_f_n, victoria_f = resultados_aux(lista_f, lista_p_f,puntos_f)
+        puntos_f_n, victoria_f = resultados_aux(lista_f, lista_p_f, puntos_f)
 
     if contar(lista_j) < 21:
         if len(lista_j) == 5:
@@ -224,8 +224,6 @@ def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
         else:
             puntos_f_n = 1
             victoria_j = 1
-
-
 
     if contar(lista_j) > 21:
         victoria_j = 0
@@ -262,7 +260,7 @@ def resultados_aux(lista, lista_p, puntos):
         return puntos, 4
 
     if len(lista) == 5:
-        for carta in range(0,len(lista)):
+        for carta in range(0, len(lista)):
             if type(lista[carta]) != str:
                 verificar_figuras += 1
 
@@ -273,7 +271,7 @@ def resultados_aux(lista, lista_p, puntos):
     if len(lista) == 2:
         puntos += 1
         return puntos, 3
-    
+
     puntos += 1
     return puntos, 8
 
@@ -314,7 +312,7 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
 
     if victoria_j == 0:
         print("El jugador se pasó de 21, no gana puntos.")
-    elif victoria_j == 1: 
+    elif victoria_j == 1:
         puntos_j -= 1
         print("El jugador tuvo menos de 21, no gana puntos.")
     elif victoria_j == 2:
@@ -329,9 +327,8 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
         print("El jugador ganó con triple 7. Gana 5 puntos.")
     elif victoria_j == 8:
         print("El jugador ganó con 21 sin ningún bonus. Gana 1 punto.")
-    else: 
+    else:
         print("Error01")
-
 
     print()
 
@@ -345,7 +342,8 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
     elif victoria_f == 3:
         print("Los fascistas ganaron con Black Jack. Ganan 1 punto.")
     elif victoria_f == 4:
-        print("Los fascistas ganaron con un 5 de rombos como primera carta. Ganan 3 puntos.")
+        print(
+            "Los fascistas ganaron con un 5 de rombos como primera carta. Ganan 3 puntos.")
     elif victoria_f == 5:
         print("Los fascistas ganaron con Doble As. Ganan 4 puntos.")
     elif victoria_f == 6:
@@ -364,20 +362,24 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
 
     return puntos_f, puntos_j
 
-def fin_del_juego(puntos_j,puntos_f):
+
+def fin_del_juego(puntos_j, puntos_f):
     """
     Imprime el mensaje al terminar el juego
     E: los puntos de los dos jugadores
     S: el mensaje de fin del juegp
     R: no hay
-    """      
+    """
     if puntos_f > puntos_j:
-        print(f"Los anarquistas ganaron con {puntos_j} puntos.\nLos fascistas perdieron con {puntos_f} puntos.")
+        print(
+            f"Los anarquistas ganaron con {puntos_j} puntos.\nLos fascistas perdieron con {puntos_f} puntos.")
     elif puntos_f == puntos_j:
-        print(f"Ambos bandos tuvieron {puntos_j} puntos. Quedaron en un empate.")
+        print(
+            f"Ambos bandos tuvieron {puntos_j} puntos. Quedaron en un empate.")
     else:
         print(
             f"Los fascistas ganaron con {puntos_f} puntos.\nLos anarquistas perdieron con {puntos_j} puntos.")
+
 
 def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     """
@@ -388,10 +390,10 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     """
     puntos_f = 0
     puntos_j = 0
-    número = 1
+
     jugar = True
     while jugar:
-        # Se usa para imprimir la última carta de la lista
+        número = 1  # Se usa para imprimir la última carta de la lista
         lista_j = []
         lista_f = []
         lista_p_f = []
@@ -448,26 +450,23 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
 
         puntos_j, puntos_f, victoria_j, victoria_f = resultados(
             lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f)
+
+        puntos_f, puntos_j = mensaje_victoria(
+            victoria_j, victoria_f, puntos_j, puntos_f)
+
         
-        puntos_f, puntos_j = mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f)
-
-
-        volver_a_jugar = input("¿Quiere jugar de nuevo?\n1. Sí\n2. No\n")
         loop = True
         while loop:
+            volver_a_jugar = input("¿Quiere jugar de nuevo?\n1. Sí\n2. No\n")
             if volver_a_jugar == "1":
                 loop = False
                 break
-            elif volver_a_jugar == "2": 
+            elif volver_a_jugar == "2":
                 loop = False
-                fin_del_juego(puntos_j,puntos_f)
+                fin_del_juego(puntos_j, puntos_f)
                 jugar = False
             else:
                 print("Esa no es una opción.")
-        
-
-        
 
 
 juego()
-

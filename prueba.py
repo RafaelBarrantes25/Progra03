@@ -1,14 +1,14 @@
-amogus = [[1,2,3],
-          [4,5,6],
-          [7,8,9]]
 
-i = 0 
-j = 0
-lista = []
-for j in range(len(amogus)):
-    i = 0
-    for i in range(len(amogus[0])):
-        lista += [amogus[i][j]]
+loop = True
+while loop:
+    volver_a_jugar = input("¿Quiere jugar de nuevo?\n1. Sí\n2. No\n")
+    if volver_a_jugar == "1":
+        loop = False
+        break
+    elif volver_a_jugar == "2":
+        loop = False
+        print("Hola")
+        jugar = False
+    else:
+        print("Esa no es una opción.")
 
-
-print(lista)
