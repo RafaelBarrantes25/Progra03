@@ -208,7 +208,7 @@ def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
             puntos_j_n = 2
             victoria_j = 2
         else:
-            puntos_j_n = 1
+            puntos_j_n = 0
             victoria_j = 1
     verificar_figuras = 0
 
@@ -222,8 +222,8 @@ def resultados(lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f):
             puntos += 2
             victoria_f = 2
         else:
-            puntos_f_n = 1
-            victoria_j = 1
+            puntos_f_n = 0
+            victoria_f = 1
 
     if contar(lista_j) > 21:
         victoria_j = 0
@@ -313,7 +313,6 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
     if victoria_j == 0:
         print("El jugador se pasó de 21, no gana puntos.")
     elif victoria_j == 1:
-        puntos_j -= 1
         print("El jugador tuvo menos de 21, no gana puntos.")
     elif victoria_j == 2:
         print("El jugador ganó con 5 o más cartas sin figuras. Gana 2 puntos.")
@@ -335,7 +334,6 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
     if victoria_f == 0:
         print("Los fascistas se pasaron de 21, no ganaron puntos.")
     elif victoria_f == 1:
-        puntos_f -= 1
         print("Los fascistas tuvieron menos de 21, no ganan puntos.")
     elif victoria_f == 2:
         print("Los fascistas ganaron con 5 o más cartas sin figuras. Ganan 2 puntos.")
