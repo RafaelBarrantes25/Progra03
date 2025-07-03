@@ -1,14 +1,13 @@
-
-loop = True
-while loop:
-    volver_a_jugar = input("¿Quiere jugar de nuevo?\n1. Sí\n2. No\n")
-    if volver_a_jugar == "1":
-        loop = False
-        break
-    elif volver_a_jugar == "2":
-        loop = False
-        print("Hola")
-        jugar = False
-    else:
-        print("Esa no es una opción.")
-
+import time
+def leer(texto):
+    """
+    Esto hace que un texto vaya apareciendo poco a poco en pantalla
+    E: Un texto
+    S: Un texto
+    R: Texto tipo str
+    """
+    for letras in texto:
+        print(letras, end="", flush=True)
+        time.sleep(0.025)
+hola = 4
+leer(f"hola {hola}")
