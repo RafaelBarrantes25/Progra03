@@ -620,7 +620,7 @@ def final(bando):
                             "1. Si\n2. No\n[Aún no implementado]\n")
                             
             if jugar21 == '1':
-                #veintiuno()
+                veintiuno()
                 jugar21 = 1
                 
             elif jugar21 == '2':
