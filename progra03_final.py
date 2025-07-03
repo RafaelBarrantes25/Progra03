@@ -1,10 +1,10 @@
-##Imports
+# Imports
 
 import random
 import time
 
 
-##Anarquistas contra fascistas: La lucha continua
+# Anarquistas contra fascistas: La lucha continua
 
 def tablero(lista):
     """
@@ -18,7 +18,7 @@ def tablero(lista):
     fila = []
     i = 0
 
-    #Fila 0
+    # Fila 0
     while i < 9:
         if i == 2:
             if [lista[0]] + [lista[1]] == [0, 1]:
@@ -96,7 +96,7 @@ def tablero(lista):
     fila = []
     i = 0
 
-    #Fila 1
+    # Fila 1
     while i < 9:
         if i == 0:
             fila += ["  "]
@@ -122,8 +122,7 @@ def tablero(lista):
     fila = []
     i = 0
 
-
-    #Fila 2
+    # Fila 2
     while i < 9:
         if i == 0:
             if [lista[0]] + [lista[1]] == [1, 0]:
@@ -240,7 +239,7 @@ def tablero(lista):
     fila = []
     i = 0
 
-    #Fila 3
+    # Fila 3
     while i < 9:
         if i == 0:
             fila += ["  "]
@@ -265,8 +264,7 @@ def tablero(lista):
     fila = []
     i = 0
 
-
-    #Fila 4
+    # Fila 4
     while i < 9:
         if i == 2:
             if [lista[0]] + [lista[1]] == [2, 1]:
@@ -361,36 +359,36 @@ def lore():
     R: Ninguna
     """
     leer("Hola de nuevo compañero anarquista, ya hace más de un mes que"
-         + " vencimos\na los fascistas en nuestra carrera para decidir" 
+         + " vencimos\na los fascistas en nuestra carrera para decidir"
          + " las políticas de\nnuestro nuevo mundo. Aunque por " +
          "supuesto te llamamos porque tenemos una\nnueva misión.\n")
-         
+
     input("\nPRESIONA ENTER PARA CONTINUAR\n")
-    
-    leer("Si bien la gran mayoría de los fascistas que vencimos" + 
+
+    leer("Si bien la gran mayoría de los fascistas que vencimos" +
          " admitieron\nla derrota, recientemente de nuestra red de " +
          "información nos llegó\nla noticia de que un fascista radical"
          + " está perturbando la paz por\nla zona de San Ramón y " +
          "Palmares de Alajuela.\n")
-         
+
     input("\nPRESIONA ENTER PARA CONTINUAR\n")
-    
+
     leer("El plan es que enviaremos a Rafael, Ian y Eduardo allí para" +
          " que traten de\ncapturarlo pacíficamente mientras tú los " +
          "guías con ayuda de un dron\nfuturista. Pero te advierto que " +
          "como buenos anarquistas\nno van a retroceder, literalmente.\n"
          )
-         
+
     input("\n¿Estás listo?\n1. ¡Vamos!\n2. Sí\n")
-    
+
     leer("\nQue bueno\n\nEn tu pantalla saldrá el mapa del distrito " +
          "donde está el fascista junto\ncon su ubicación representada "
          + "por una liebre (🐰). Además de las ubicaciones\nde nuestros"
          + " compañeros representadas de la siguiente manera:\n" +
          "🐕: Rafael\n🐩: Ian\n🌭: Eduardo\n\nBuena suerte.\n")
-         
+
     input("\nPRESIONA ENTER PARA CONTINUAR\n")
-    
+
 
 def movimiento_p(lista):
     """
@@ -405,13 +403,13 @@ def movimiento_p(lista):
 
         if nueva_posición == '1':
             return [0, 2]
-            
+
         elif nueva_posición == '2':
             return [1, 2]
-            
+
         elif nueva_posición == '3':
             return [1, 1]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
@@ -419,66 +417,65 @@ def movimiento_p(lista):
     elif lista == [0, 2]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Este\n2. Sur\n")
-                               
+
         if nueva_posición == '1':
             return [0, 3]
-            
+
         elif nueva_posición == '2':
             return [1, 2]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-            
-        
+
     elif lista == [0, 3]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Sur-Este\n2. Sur\n")
-                               
+
         if nueva_posición == '1':
             return [1, 4]
-            
+
         elif nueva_posición == '2':
             return [1, 3]
 
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-        
+
     elif lista == [1, 0]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Nor-Este\n2. Este\n3. Sur-Este\n")
-                               
+
         if nueva_posición == '1':
             return [0, 1]
-            
+
         elif nueva_posición == '2':
             return [1, 1]
-            
+
         elif nueva_posición == '3':
             return [2, 1]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-        
+
     elif lista == [1, 1]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Norte\n2. Este\n3. Sur\n")
-                               
+
         if nueva_posición == '1':
             return [0, 1]
-            
+
         elif nueva_posición == '2':
             return [1, 2]
-            
+
         elif nueva_posición == '3':
             return [2, 1]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-        
+
     elif lista == [1, 2]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Norte\n2. Nor-Este\n3. Este\n" +
@@ -486,91 +483,90 @@ def movimiento_p(lista):
 
         if nueva_posición == '1':
             return [0, 2]
-            
+
         elif nueva_posición == '2':
             return [0, 3]
-            
+
         elif nueva_posición == '3':
             return [1, 3]
-            
+
         elif nueva_posición == '4':
             return [2, 3]
-            
+
         elif nueva_posición == '5':
             return [2, 2]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-    
+
     elif lista == [1, 3]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Norte\n2. Este\n3. Sur\n")
-                               
+
         if nueva_posición == '1':
             return [0, 3]
-            
+
         elif nueva_posición == '2':
             return [1, 4]
-            
+
         elif nueva_posición == '3':
             return [2, 3]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-        
+
     elif lista == [1, 4]:
         leer("\nTu amigo no puede moverse desde ahí\n")
         return lista
-                               
-        
+
     elif lista == [2, 1]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Norte\n2. Nor-Este\n3. Este\n")
-                               
+
         if nueva_posición == '1':
             return [1, 1]
-            
+
         elif nueva_posición == '2':
             return [1, 2]
-            
+
         elif nueva_posición == '3':
             return [2, 2]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-        
+
     elif lista == [2, 2]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Norte\n2. Este\n")
-                               
+
         if nueva_posición == '1':
             return [1, 2]
-            
+
         elif nueva_posición == '2':
             return [2, 3]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-        
+
     elif lista == [2, 3]:
         nueva_posición = input("\n¿A dónde quieres moverlo?\n" +
                                "1. Norte\n2. Nor-Este\n")
-                               
+
         if nueva_posición == '1':
             return [1, 3]
-            
+
         elif nueva_posición == '2':
             return [1, 4]
-            
+
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
-    
-            
+
+
 def posibilidad(lista1, lista2, lista3, lista4):
     """
     Esto revisa si la liebre (lista 4) tiene posibilidades de \
@@ -579,27 +575,27 @@ def posibilidad(lista1, lista2, lista3, lista4):
     S: True or False
     R: Listas tipo list de longitud 2
     """
-    if(lista4 == [0, 2] and
+    if (lista4 == [0, 2] and
        (lista1 == [0, 1] or lista1 == [1, 2] or lista1 == [0, 3]) and
        (lista2 == [0, 1] or lista2 == [1, 2] or lista2 == [0, 3]) and
        (lista3 == [0, 1] or lista3 == [1, 2] or lista3 == [0, 3])):
         return False
-        
-    elif(lista4 == [1, 4] and
-         (lista1 == [0, 3] or lista1 == [1, 3] or lista1 == [2, 3]) and
-         (lista2 == [0, 3] or lista2 == [1, 3] or lista2 == [2, 3]) and
-         (lista3 == [0, 3] or lista3 == [1, 3] or lista3 == [2, 3])):
+
+    elif (lista4 == [1, 4] and
+          (lista1 == [0, 3] or lista1 == [1, 3] or lista1 == [2, 3]) and
+          (lista2 == [0, 3] or lista2 == [1, 3] or lista2 == [2, 3]) and
+          (lista3 == [0, 3] or lista3 == [1, 3] or lista3 == [2, 3])):
         return False
-    
-    elif(lista4 == [2, 2] and
-         (lista1 == [2, 1] or lista1 == [1, 2] or lista1 == [2, 3]) and
-         (lista2 == [2, 1] or lista2 == [1, 2] or lista2 == [2, 3]) and
-         (lista3 == [2, 1] or lista3 == [1, 2] or lista3 == [2, 3])):
+
+    elif (lista4 == [2, 2] and
+          (lista1 == [2, 1] or lista1 == [1, 2] or lista1 == [2, 3]) and
+          (lista2 == [2, 1] or lista2 == [1, 2] or lista2 == [2, 3]) and
+          (lista3 == [2, 1] or lista3 == [1, 2] or lista3 == [2, 3])):
         return False
-        
+
     else:
         return True
-            
+
 
 def final(bando):
     """
@@ -613,32 +609,31 @@ def final(bando):
              "Hemos logrado capturar al fascista de manera pacífica\n" +
              "No creo que cause más problemas de aquí en adelante.\n" +
              "Tanto trabajo merece su recompensa.\n")
-             
+
         jugar21 = ''
         while jugar21 == '':
             jugar21 = input("\n¿Te animas a unas partidas de 21?\n" +
                             "1. Si\n2. No\n")
-                            
+
             if jugar21 == '1':
                 transición(1)
                 jugar21 = 'S'
-                
+
             elif jugar21 == '2':
                 leer("\nBueno, la próxima será...\n" +
                      "La próxima será. Adiós.\n")
                 jugar21 = 'N'
-                
+
             else:
                 leer("\nLa verdad no te entendí, ¿me lo repites?\n")
-        
-    
+
     elif bando == 'fascista':
         time.sleep(1)
         leer("\nLamentablemente el fascista se nos escapó, pero eso no" +
              " importa.\nUno de nuestros compañeros vio hacia donde" +
              " se fue.\nAún estamos a tiempo de seguirlo y atraparlo." +
              "\n¡NO DEBEMOS RENDIRNOS!\n\n")
-             
+
         seguir = 'a'
 
         while seguir != '':
@@ -649,22 +644,21 @@ def final(bando):
                      "intentemos capturarlo de nuevo.\n")
                 time.sleep(1)
                 return 0
-                    
+
             elif seguir == '2':
                 leer("\nOh...\nEntiendo... Supongo que tienes cosas" +
                      " que hacer.\nSi quieres volver a ayudarnos," +
                      " aquí estaremos en la lucha por el futuro.")
                 return 1
-                    
-                    
+
             else:
                 leer("\nLo siento, no entendí, ¿Si o no?\n\n")
-    
+
     else:
         print('Error: Final no dado correctamente')
-    
 
-##Funciones auxiliares
+
+# Funciones auxiliares
 
 def leer(texto):
     """
@@ -674,7 +668,7 @@ def leer(texto):
     R: Texto tipo str
     """
     for letras in texto:
-        print(letras,end="",flush=True)
+        print(letras, end="", flush=True)
         time.sleep(0.025)
 
 
@@ -694,11 +688,11 @@ def pertenece(lista1, lista2):
 
         elif lista1 == listas:
             return True
-            
+
     return False
 
 
-##Juego
+# Juego
 
 def anarquistas_contra_fascistas():
     """
@@ -707,18 +701,17 @@ def anarquistas_contra_fascistas():
     S: La ejecución del juego
     R: Ninguna
     """
-    #lore()
+    lore()
 
     posiciones_válidas = [[0, 1], [0, 2], [0, 3],
                           [1, 0], [1, 1], [1, 2], [1, 3], [1, 4],
                           [2, 1], [2, 2], [2, 3]]
-                          
+
     octágonos = [[0, 1], [0, 3], [1, 0], [1, 2], [1, 4], [2, 1], [2, 3]]
-                          
+
     cuadrados = [[0, 2], [1, 1], [1, 3], [2, 2]]
-    
+
     capturada = 0
-                            
 
     posiciones = [0, 1, 1, 0, 2, 1, 1, 4]
 
@@ -734,7 +727,7 @@ def anarquistas_contra_fascistas():
 
         tablero(posiciones)
 
-        if(posición4[1] <= posición1[1] and posición4[1] <= posición2[1]
+        if (posición4[1] <= posición1[1] and posición4[1] <= posición2[1]
            and posición4[1] <= posición3[1]):
             fin = final('fascista')
             if fin == 0:
@@ -744,7 +737,7 @@ def anarquistas_contra_fascistas():
                 posición3 = [posiciones[4], posiciones[5]]
                 posición4 = [posiciones[6], posiciones[7]]
                 tablero(posiciones)
-            
+
             elif fin == 1:
                 fin_perros = 1
                 transición(2)
@@ -753,8 +746,7 @@ def anarquistas_contra_fascistas():
             fin = final('anarquista')
             fin_perros = 1
 
-
-        #Movimiento perros
+        # Movimiento perros
         while fin_perros != 1:
             while mover != 1 and mover != 2 and mover != 3:
                 mover = input("¿A cuál de tus compañeros vas a mover?\n"
@@ -762,90 +754,89 @@ def anarquistas_contra_fascistas():
 
                 if mover == '1':
                     mover = 1
-            
+
                 elif mover == '2':
                     mover = 2
-            
+
                 elif mover == '3':
                     mover = 3
-            
+
                 else:
                     leer('\nResponda bien con 1, 2 o 3.' +
                          '\nPor favor.\n\n')
-    
+
             if mover == 1:
                 movido = movimiento_p(posición1)
 
             elif mover == 2:
                 movido = movimiento_p(posición2)
-        
+
             elif mover == 3:
                 movido = movimiento_p(posición3)
-            
-            if(movido == posición1 or movido == posición2
+
+            if (movido == posición1 or movido == posición2
                or movido == posición3):
                 leer('\nCreo que deberíamos intentar otro movimiento\n\n')
                 mover = ''
-               
+
             elif movido == posición4:
                 leer('\nNo, debemos acercarnos sigilosamente a él\n')
                 mover == ''
-        
+
             else:
                 if mover == 1:
                     posición1 = movido
                     fin_perros = 1
-                
+
                 elif mover == 2:
                     posición2 = movido
                     fin_perros = 1
-                
+
                 elif mover == 3:
                     posición3 = movido
                     fin_perros = 1
-                
-        #Movimiento de la liebre
+
+        # Movimiento de la liebre
         libre = 0
-            
+
         while libre != 1:
             if pertenece(posición4, octágonos) == True:
                 movido = [posición4[0] + random.randint(-1, 1),
                           posición4[1] + random.randint(-1, 1)]
-                
-                          
+
             dirección = random.randint(0, 1)
-            if(pertenece(posición4, cuadrados) == True and
+            if (pertenece(posición4, cuadrados) == True and
                dirección == 0):
                 movido = [posición4[0],
                           posición4[1] + random.randint(-1, 1)]
-                          
-            elif(pertenece(posición4, cuadrados) == True and
-                 dirección == 1):
+
+            elif (pertenece(posición4, cuadrados) == True and
+                  dirección == 1):
                 movido = [posición4[0] + random.randint(-1, 1),
                           posición4[1]]
-                
+
             if pertenece(movido, posiciones_válidas) != True:
                 libre = 0
-                
+
             elif posibilidad(posición1, posición2,
                              posición3, movido) == False:
                 capturada = 1
                 posición4 = movido
                 libre = 1
-        
-            elif(movido == posición1 or movido == posición2 or
-                movido == posición3 or movido == posición4):
+
+            elif (movido == posición1 or movido == posición2 or
+                  movido == posición3 or movido == posición4):
                 libre = 0
-                
-                
+
             else:
                 posición4 = movido
                 libre = 1
-                
+
         posiciones = posición1 + posición2 + posición3 + posición4
 
 
 # veintiuno ----------------------------------
+
 
 def escoger_carta():
     palos = ["picas", "corazones", "diamantes", "tréboles"]
@@ -860,7 +851,7 @@ def escoger_carta():
 def asignar_primeras(lista, lista_p):
     """
     Se usa para asignar las cartas iniciales al jugador y a los \
-    fascistas
+    rivales
     E: lista vacía
     S: la lista con 2 cartas iniciales
     R: no deberían haber
@@ -881,6 +872,43 @@ def asignar_primeras(lista, lista_p):
     return lista, lista_p
 
 
+def leer_2(texto):
+    """
+    Esto hace que un texto vaya apareciendo poco a poco en pantalla
+    E: Un texto
+    S: Un texto
+    R: Texto tipo str
+    """
+
+    texto_nuevo = texto+"\n"
+    for letras in texto_nuevo:
+        print(letras, end="", flush=True)
+        time.sleep(0.025)
+
+
+def nombres():
+    """
+    Escoge el nombre del contrincante
+    E: nada
+    S: nombre y apellido en string
+    R: nada
+    """
+    nombre = ["José", "María", "Carlos", "Ana", "Luis", "Sofía", "Juan", "Isabel", "Pedro", "Lucía",
+              "Gabriel", "Carmen", "Fernando", "Laura", "Miguel", "Teresa", "Antonio", "Patricia", "Ricardo",
+              "Elena", "Francisco", "Adriana", "Manuel", "Victoria", "David", "Marta", "Raúl", "Gloria",
+              "Alberto", "Clara"]
+
+    apellido = ["Chaves", "Pérez", "Jiménez", "González", "Rodríguez", "Vargas", "Monge", "Ramírez", "Alvarado", "Gómez",
+                "Morales", "Rojas", "Araya", "Quirós", "Castro", "Sánchez", "Muñoz", "Bermúdez", "Salazar", "Moreno",
+                "Ureña", "Cordero", "Soto", "Vargas", "Alfaro", "Vásquez", "Siles", "Herrera", "Cruz",
+                "Benavides"]
+    número_aleatorio = random.randint(0, len(nombre)-1)
+    número_aleatorio_2 = random.randint(0, len(apellido)-1)
+    n_final = nombre[número_aleatorio]
+    a_final = apellido[número_aleatorio_2]
+    return n_final, a_final
+
+
 def convertir_as(lista):
     """
     Los as son 11 por defecto.
@@ -893,7 +921,7 @@ def convertir_as(lista):
     if type(lista) != list:
         print('Error: La lista no es lista en convertir_as(lista)')
 
-    for valor in range(0, len(lista)-1):
+    for valor in range(0, len(lista) - 1):
         if lista[valor] == 11 and contar(lista) > 21:
             lista[valor] = 1
 
@@ -913,13 +941,13 @@ def contar(lista):
             contador += 10
         else:
             contador += lista[valor]
-            
+
     """
     Yo lo haría así:
     for valor in lista:
         if type(valor) == str:
             contador += 10
-            
+
         else:
             contador += lista[valor]
     """
@@ -941,20 +969,20 @@ def turno_jugador(lista_j, lista_p_j, número):
             número += 1
             asignar_primeras(lista_j, lista_p_j)
             if lista_j[número] == 11 or lista_j[número] == 1:
-                leer(
+                leer_2(
                     f"La nueva carta del jugador es un as de {lista_p_j[número]}")
                 return lista_j, lista_p_j, respuesta, número
             else:
-                leer(
+                leer_2(
                     f"La nueva carta del jugador es un {lista_j[número]} de {lista_p_j[número]}")
                 return lista_j, lista_p_j, respuesta, número
         elif respuesta == "2":
             return lista_j, lista_p_j, respuesta, número
         else:
-            leer("Esa no es una opción")
+            leer_2("Esa no es una opción")
 
 
-def cpu1(lista_f, lista_p_f):
+def cpu1(lista_f, lista_p_f, nombre):
     """
     Ejecuta el turno de la cpu 1
     - Agarra carta si tiene 18 o menos
@@ -965,27 +993,27 @@ def cpu1(lista_f, lista_p_f):
 
     if valor <= 18:
         asignar_primeras(lista_f, lista_p_f)
-        leer("Los fascistas agarraron una carta.")
+        leer_2(f"{nombre} agarró una carta.")
         return lista_f, lista_p_f, 1
 
     elif valor == 19 or valor == 20:
         aleatorio = random.randint(1, 2)
-        
+
         if aleatorio == 1:
             asignar_primeras(lista_f, lista_p_f)
-            leer("Los fascistas agarraron una carta.")
+            leer_2(f"{nombre} agarró una carta.")
             return lista_f, lista_p_f, 1
-            
+
         else:
-            leer("Los fascistas no agarraron otra carta.")
+            leer_2(f"{nombre} no agarró otra carta.")
             return lista_f, lista_p_f, 2
-            
+
     else:
-        leer("Los fascistas no agarraron otra carta")
+        leer_2(f"{nombre} no agarró otra carta.")
         return lista_f, lista_p_f, 2
 
 
-def cpu2(lista_f, lista_p_f):
+def cpu2(lista_f, lista_p_f,nombre):
     """
     Ejecuta el turno de la cpu 2
     - Agarra carta si tiene 15 o menos
@@ -995,15 +1023,15 @@ def cpu2(lista_f, lista_p_f):
 
     if valor <= 15:
         asignar_primeras(lista_f, lista_p_f)
-        leer("Los fascistas agarraron una carta.")
+        leer_2(f"{nombre} agarró una carta.")
         return lista_f, lista_p_f, 1
-        
+
     else:
-        leer("Los fascistas no agarraron otra carta")
+        leer_2(f"{nombre} no agarró otra carta.")
         return lista_f, lista_p_f, 2
 
 
-def cpu3(lista_f, lista_p_f):
+def cpu3(lista_f, lista_p_f, nombre):
     """
     Ejecuta el turno de la cpu 3
     - Agarra carta si tiene 15 o menos
@@ -1014,32 +1042,32 @@ def cpu3(lista_f, lista_p_f):
 
     if valor <= 15:
         asignar_primeras(lista_f, lista_p_f)
-        leer("Los fascistas agarraron una carta.")
+        leer_2(f"{nombre} agarró una carta.")
         return lista_f, lista_p_f, 1
-        
+
     elif valor >= 16 and valor <= 19:
         aleatorio = random.randint(1, 2)
-        
+
         if aleatorio == 1:
             asignar_primeras(lista_f, lista_p_f)
-            leer("Los fascistas agarraron una carta.")
+            leer_2(f"{nombre} agarró una carta.")
             return lista_f, lista_p_f, 1
-            
+
         else:
-            leer("Los fascistas no agarraron otra carta.")
+            leer_2(f"{nombre} no agarró otra carta.")
             return lista_f, lista_p_f, 2
-            
+
     else:
-        leer("Los fascistas no agarraron otra carta")
+        leer_2(f"{nombre} no agarró otra carta.")
         return lista_f, lista_p_f, 2
 
 
-def cpu4(lista_f, lista_p_f):
+def cpu4(lista_f, lista_p_f, nombre):
     """
     Ejecuta el turno de la cpu 4
     No agarra cartas, se queda con las iniciales
     """
-    leer("Los fascistas no agarraron otra carta")
+    leer_2(f"{nombre} no agarró otra carta.")
     return lista_f, lista_p_f, 2
 
 
@@ -1123,7 +1151,7 @@ def resultados_aux(lista, lista_p, puntos):
         puntos += 5
         return puntos, 6
 
-    for carta in range(0, len(lista)-1):
+    for carta in range(0, len(lista) - 1):
         if lista[carta] == 1 or lista[carta] == 11:
             aces += 1
 
@@ -1152,31 +1180,31 @@ def resultados_aux(lista, lista_p, puntos):
     return puntos, 8
 
 
-def imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f):
+def imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f, nombre):
     """
     Imprime la lista de cartas finales
     E: las listas de cartas
     S: las cartas finales
     R: no deberían haber
     """
-    leer("\nLas cartas del jugador son:\n")
+    leer_2("\nLas cartas del jugador son:\n")
 
     for carta in range(0, len(lista_j)):
         if lista_j[carta] == 1 or lista_j[carta] == 11:
-            leer(f"As de {lista_p_j[carta]}")
+            leer_2(f"As de {lista_p_j[carta]}")
         else:
-            leer(f"{lista_j[carta]} de {lista_p_j[carta]}")
+            leer_2(f"{lista_j[carta]} de {lista_p_j[carta]}")
 
-    leer("\nLas cartas de los fascistas son:\n")
+    leer_2(f"\nLas cartas de {nombre} son:\n")
 
     for carta in range(0, len(lista_f)):
         if lista_f[carta] == 1 or lista_f[carta] == 11:
-            leer(f"As de {lista_p_f[carta]}")
+            leer_2(f"As de {lista_p_f[carta]}")
         else:
-            leer(f"{lista_f[carta]} de {lista_p_f[carta]}")
+            leer_2(f"{lista_f[carta]} de {lista_p_f[carta]}")
 
 
-def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
+def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f, nombre):
     """
     Imprime el mensaje de victoria y muestra los puntos
     E: victoria de cada uno y los puntos
@@ -1185,71 +1213,76 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
     """
 
     if victoria_j == 0:
-        leer("El jugador se pasó de 21, no gana puntos.")
+        leer_2("El jugador se pasó de 21, no gana puntos.")
     elif victoria_j == 1:
-        leer("El jugador tuvo menos de 21, no gana puntos.")
+        leer_2("El jugador tuvo menos de 21, no gana puntos.")
     elif victoria_j == 2:
-        leer("El jugador ganó con 5 o más cartas sin figuras. Gana 2 puntos.")
+        leer_2("El jugador ganó con 5 o más cartas sin figuras. Gana 2 puntos.")
     elif victoria_j == 3:
-        leer("El jugador ganó con Black Jack. Gana 1 punto.")
+        leer_2("El jugador ganó con Black Jack. Gana 1 punto.")
     elif victoria_j == 4:
-        leer("El jugador ganó con un 5 de rombos como primera carta. Gana 3 puntos.")
+        leer_2("El jugador ganó con un 5 de rombos como primera carta. Gana 3 puntos.")
     elif victoria_j == 5:
-        leer("El jugador ganó con Doble As. Gana 4 puntos.")
+        leer_2("El jugador ganó con Doble As. Gana 4 puntos.")
     elif victoria_j == 6:
-        leer("El jugador ganó con triple 7. Gana 5 puntos.")
+        leer_2("El jugador ganó con triple 7. Gana 5 puntos.")
     elif victoria_j == 8:
-        leer("El jugador ganó con 21 sin ningún bonus. Gana 1 punto.")
+        leer_2("El jugador ganó con 21 sin ningún bonus. Gana 1 punto.")
     else:
-        leer("Error01")
+        leer_2("Error01")
 
     print()
 
     if victoria_f == 0:
-        leer("Los fascistas se pasaron de 21, no ganaron puntos.")
+        leer_2(f"{nombre} se pasó de 21, no gana puntos.")
+
     elif victoria_f == 1:
-        leer("Los fascistas tuvieron menos de 21, no ganan puntos.")
+        leer_2(f"{nombre} tuvo menos de 21, no gana puntos.")
+
     elif victoria_f == 2:
-        leer("Los fascistas ganaron con 5 o más cartas sin figuras. " +
-             "Ganan 2 puntos.")
+        leer_2(f"{nombre} ganó con 5 o más cartas sin figuras. " +
+               "Gana 2 puntos.\n")
+
     elif victoria_f == 3:
-        leer("Los fascistas ganaron con Black Jack. Ganan 1 punto.")
+        leer_2(f"{nombre} ganó con Black Jack. Gana 1 punto.")
+
     elif victoria_f == 4:
-        leer("Los fascistas ganaron con un 5 de rombos como primera " +
-             "carta. Ganan 3 puntos.")
+        leer_2(f"{nombre} ganó con un 5 de rombos como primera " +
+               "carta. Gana 3 puntos.")
+
     elif victoria_f == 5:
-        leer("Los fascistas ganaron con Doble As. Ganan 4 puntos.")
+        leer_2(f"{nombre} ganó con Doble As. Gana 4 puntos.")
     elif victoria_f == 6:
-        leer("Los fascistas ganaron con triple 7. Ganan 5 puntos.")
+        leer_2(f"{nombre} ganó con triple 7. Gana 5 puntos.")
     elif victoria_f == 8:
-        leer("Los fascistas ganaron con 21 sin ningún bonus. Ganan 1 punto.")
+        leer_2(f"{nombre} ganó con 21 sin ningún bonus. Gana 1 punto.")
     else:
-        leer("Error02")
+        leer_2("Error02")
 
-
-    leer("\nPuntos anarquistas   |   Puntos fascistas")
-    leer(f"     {puntos_j}                    {puntos_f} ")
+    leer_2(f"\nPuntos del jugador   |   Puntos de {nombre}")
+    print()
+    leer_2(f"         {puntos_j}                    {puntos_f} ")
     print("\n\n")
 
     return puntos_f, puntos_j
 
 
-def fin_del_juego(puntos_j, puntos_f):
+def fin_del_juego(puntos_j, puntos_f, nombre):
     """
     Imprime el mensaje al terminar el juego
     E: los puntos de los dos jugadores
     S: el mensaje de fin del juegp
     R: no hay
     """
-    if puntos_f > puntos_j:
-        leer(
-            f"Los anarquistas ganaron con {puntos_j} puntos.\nLos fascistas perdieron con {puntos_f} puntos.")
+    if puntos_f < puntos_j:
+        leer_2(
+            f"El jugador ganó con {puntos_j} puntos.\n{nombre} perdió con {puntos_f} puntos.")
     elif puntos_f == puntos_j:
-        leer(
-            f"Ambos bandos tuvieron {puntos_j} puntos. Quedaron en un empate.")
+        leer_2(
+            f"Ambos jugadores tuvieron {puntos_j} puntos. Quedaron en un empate.")
     else:
-        leer(
-            f"Los fascistas ganaron con {puntos_f} puntos.\nLos anarquistas perdieron con {puntos_j} puntos.")
+        leer_2(
+            f"{nombre} ganó con {puntos_f} puntos.\nEl jugador perdió con {puntos_j} puntos.")
 
 
 def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
@@ -1259,13 +1292,15 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     S: el juego
     R: no deberían haber restricciones
     """
-    leer("Tras una ardua batalla, ambos bandos decidieron\nsolucionar" +
-         "sus disputas con un juego de Black Jack.")
+    
     puntos_f = 0
     puntos_j = 0
 
     jugar = True
     while jugar:
+        nombre,apellido = nombres()
+        leer_2(f"Su oponente será {nombre} {apellido}.\nSe repartieron las " +
+               "primeras cartas boca abajo.\n")
         número = 1  # Se usa para imprimir la última carta de la lista
         lista_j = []
         lista_f = []
@@ -1279,17 +1314,17 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
                 lista_f, lista_p_f = asignar_primeras(lista_f, lista_p_f)
 
         if lista_f[1] == 11 or lista_f[1] == 1:
-            leer(
-                f"La segunda carta de los fascistas es un as de {lista_p_f[1]}")
+            leer_2(
+                f"La segunda carta de {nombre} es un as de {lista_p_f[1]}")
         else:
-            leer(
-                f"La segunda carta de los fascistas es un {lista_f[1]} de {lista_p_f[1]}")
+            leer_2(
+                f"La segunda carta de {nombre} es un {lista_f[1]} de {lista_p_f[1]}")
         print()
         if lista_j[1] == 11 or lista_j[1] == 1:
-            leer(
+            leer_2(
                 f"La segunda carta del jugador es un as de {lista_p_j[1]}")
         else:
-            leer(
+            leer_2(
                 f"La segunda carta del jugador es un {lista_j[1]} de {lista_p_j[1]}")
 
         print()
@@ -1301,7 +1336,7 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
 
             lista_j, lista_p_j, respuesta, número_n = turno_jugador(
                 lista_j, lista_p_j, número)
-            lista_f, lista_p_f, respuesta_f = perfil(lista_f, lista_p_f)
+            lista_f, lista_p_f, respuesta_f = perfil(lista_f, lista_p_f,nombre)
 
             if respuesta == "1":
                 número = número_n
@@ -1315,17 +1350,17 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
 
         print()
 
-        leer(f"Las cartas del jugador suman {contar(lista_j)}")
+        leer_2(f"Las cartas del jugador suman {contar(lista_j)}")
 
         print()
 
-        leer(f"Las cartas de los fascistas suman {contar(lista_f)}")
+        leer_2(f"Las cartas de {nombre} suman {contar(lista_f)}")
 
         puntos_j, puntos_f, victoria_j, victoria_f = resultados(
             lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f)
 
         puntos_f, puntos_j = mensaje_victoria(
-            victoria_j, victoria_f, puntos_j, puntos_f)
+            victoria_j, victoria_f, puntos_j, puntos_f, nombre)
 
         loop = True
         while loop:
@@ -1335,11 +1370,11 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
                 break
             elif volver_a_jugar == "2":
                 loop = False
-                fin_del_juego(puntos_j, puntos_f)
+                fin_del_juego(puntos_j, puntos_f, nombre)
                 jugar = False
             else:
-                leer("Esa no es una opción.")
-                
+                leer_2("Esa no es una opción.")
+
 
 def transición(número):
     """
@@ -1350,7 +1385,7 @@ def transición(número):
     """
     if número == 1:
         veintiuno()
-        
+
     elif número == 2:
         time.sleep(1)
         leer("\n\nEspera...\n")
@@ -1359,26 +1394,26 @@ def transición(número):
         time.sleep(1)
         leer("OYE...\n")
         time.sleep(1)
-        leer("\n[Despiertas confundido]\n[Sientes que tuviste una" + 
-             " pesadilla]\n")
-              
+        leer("\n[Despiertas confundido]\n[Sientes que tuviste una" +
+               " pesadilla]\n")
+
         input('\nPRESIONA ENTER PARA CONTINUAR\n')
 
         leer("\nAmigo, ¿todo bien?\n" +
-             "Capturamos a un fascista en Alajuela y caiste muerto" +
-             " por el cansansio\nEstábamos a punto de jugar unas " +
-             "partidas de 21.\n")
-             
+               "Capturamos a un fascista en Alajuela y caiste muerto" +
+               " por el cansansio\nEstábamos a punto de jugar unas " +
+               "partidas de 21.\n")
+
         loop = True
         while loop:
             jugar21 = input("\n¿Te animas a jugar?\n1. Sí\n2. No\n")
-        
+
             if jugar21 == '1':
                 leer("\n\nGenial, por hoy tú serás la casa\n" +
-                     "Aquí vamos\n")
+                       "Aquí vamos\n")
                 veintiuno()
                 loop = False
-                
+
             elif jugar21 == '2':
                 leer('\nBueno, sigue durmiendo.\nAquí estaremos.')
                 time.sleep(1)
@@ -1386,11 +1421,12 @@ def transición(número):
                 time.sleep(1)
                 leer('[Sientes que te perdiste de mucha diversión]\n')
                 loop = False
-            
+
             else:
                 leer('\n\nOk pero, ¿vas a jugar o no?\n')
-        
-        
-        
 
-anarquistas_contra_fascistas()
+veintiuno()
+#anarquistas_contra_fascistas()
+
+
+
