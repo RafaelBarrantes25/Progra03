@@ -1164,7 +1164,7 @@ def sumar(puntos_j, puntos_f, victoria_j, victoria_f):
     if victoria_f == 0 or victoria_f == 1:
         puntos_f = puntos_f
     elif victoria_f == 2:
-        puntos_f += 1
+        puntos_f += 2
     elif victoria_f == 3:
         puntos_f += 1
     elif victoria_f == 4:
@@ -1181,7 +1181,7 @@ def sumar(puntos_j, puntos_f, victoria_j, victoria_f):
     if victoria_j == 0 or victoria_j == 1:
         puntos_j = puntos_j
     elif victoria_j == 2:
-        puntos_j += 1
+        puntos_j += 2
     elif victoria_j == 3:
         puntos_j += 1
     elif victoria_j == 4:
