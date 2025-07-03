@@ -937,12 +937,13 @@ def contar(lista):
     R: no deberían haber
     """
     contador = 0
-    for valor in lista:
-        if type(valor) == str:
+    for valor in range(0, len(lista)):
+        if type(lista[valor]) == str:
             contador += 10
-
         else:
             contador += lista[valor]
+
+
     return contador
 
 
