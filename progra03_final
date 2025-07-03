@@ -1229,7 +1229,7 @@ def fin_del_juego(puntos_j, puntos_f):
             f"Los fascistas ganaron con {puntos_f} puntos.\nLos anarquistas perdieron con {puntos_j} puntos.")
 
 
-def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
+def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     """
     Ejecuta el juego
     E: las listas de cartas de las distintas funciones
