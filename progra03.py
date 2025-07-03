@@ -521,8 +521,8 @@ def movimiento_p(lista):
             return movimiento_p(lista)
         
     elif lista == [1, 4]:
-        return lista
         leer("Tu amigo no puede moverse desde ahí\n")
+        return lista
                                
         
     elif lista == [2, 1]:
@@ -569,6 +569,36 @@ def movimiento_p(lista):
         else:
             leer('Creo que esa no es una opción\n')
             return movimiento_p(lista)
+    
+            
+def posibilidad(lista1, lista2, lista3, lista4):
+    """
+    Esto revisa si la liebre (lista 4) tiene posibilidades de \
+    movimiento
+    E: 4 listas
+    S: True or False
+    R: Listas tipo list de longitud 2
+    """
+    if(lista4 == [0, 2] and
+       (lista1 == [0, 1] or lista1 == [1, 2] or lista1 == [0, 3]) and
+       (lista2 == [0, 1] or lista2 == [1, 2] or lista2 == [0, 3]) and
+       (lista3 == [0, 1] or lista3 == [1, 2] or lista3 == [0, 3])):
+        return False
+        
+    elif(lista4 == [1, 4] and
+         (lista1 == [0, 3] or lista1 == [1, 3] or lista1 == [2, 3]) and
+         (lista2 == [0, 3] or lista2 == [1, 3] or lista2 == [2, 3]) and
+         (lista3 == [0, 3] or lista3 == [1, 3] or lista3 == [2, 3])):
+        return False
+    
+    elif(lista4 == [2, 2] and
+         (lista1 == [2, 1] or lista1 == [1, 2] or lista1 == [2, 3]) and
+         (lista2 == [2, 1] or lista2 == [1, 2] or lista2 == [2, 3]) and
+         (lista3 == [2, 1] or lista3 == [1, 2] or lista3 == [2, 3])):
+        return False
+        
+    else:
+        return True
             
 
 def final(bando):
@@ -581,7 +611,25 @@ def final(bando):
     if bando == 'anarquista':
         leer("\nFelicidades!\n" +
              "Hemos logrado capturar al fascista de manera pacífica\n" +
-             "[Falta agregar]\n")
+             "No creo que cause más problemas de aquí en adelante.\n" +
+             "Tanto trabajo merece su recompensa.\n")
+             
+        jugar21 = ''
+        while jugar21 != 1 and jugar21 != 2:
+            jugar21 = input("\n¿Te animas a unas partidas de 21?\n" +
+                            "1. Si\n2. No\n[Aún no implementado]\n")
+                            
+            if jugar21 == '1':
+                #veintiuno()
+                jugar21 = 1
+                
+            elif jugar21 == '2':
+                leer("\nBueno, la próxima será...\nAdiós.\n")
+                jugar21 = 2
+                
+            else:
+                leer("\nLa verdad no te entendí, ¿me lo repites?\n")
+        
     
     elif bando == 'fascista':
         leer("\nLamentablemente el fascista se nos escapó, pero eso no" +
@@ -660,7 +708,7 @@ def anarquistas_contra_fascistas():
     S: La ejecución del juego
     R: Ninguna
     """
-    #lore()
+    lore()
 
     posiciones_válidas = [[0, 1], [0, 2], [0, 3],
                           [1, 0], [1, 1], [1, 2], [1, 3], [1, 4],
@@ -669,6 +717,8 @@ def anarquistas_contra_fascistas():
     octágonos = [[0, 1], [0, 3], [1, 0], [1, 2], [1, 4], [2, 1], [2, 3]]
                           
     cuadrados = [[0, 2], [1, 1], [1, 3], [2, 2]]
+    
+    capturada = 0
                             
 
     posiciones = [0, 1, 1, 0, 2, 1, 1, 4]
@@ -699,11 +749,10 @@ def anarquistas_contra_fascistas():
             elif fin == 1:
                 fin_perros = 1
 
-            
-        """
-        elif :
+        elif capturada == 1:
             fin = final('anarquista')
-        """ 
+            fin_perros = 1
+
 
         #Movimiento perros
         while fin_perros != 1:
@@ -777,10 +826,17 @@ def anarquistas_contra_fascistas():
                 
             if pertenece(movido, posiciones_válidas) != True:
                 libre = 0
+                
+            elif posibilidad(posición1, posición2,
+                             posición3, movido) == False:
+                capturada = 1
+                posición4 = movido
+                libre = 1
         
             elif(movido == posición1 or movido == posición2 or
                 movido == posición3 or movido == posición4):
                 libre = 0
+                
                 
             else:
                 posición4 = movido
