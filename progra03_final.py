@@ -1346,7 +1346,7 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
         lista_j = convertir_as(lista_j)
         lista_f = convertir_as(lista_f)
 
-        imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f)
+        imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f, nombre)
 
         print()
 
