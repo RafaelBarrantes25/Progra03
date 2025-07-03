@@ -937,21 +937,12 @@ def contar(lista):
     R: no deberían haber
     """
     contador = 0
-    for valor in range(0, len(lista)):
-        if type(lista[valor]) == str:
-            contador += 10
-        else:
-            contador += lista[valor]
-
-    """
-    Yo lo haría así:
     for valor in lista:
         if type(valor) == str:
             contador += 10
 
         else:
             contador += lista[valor]
-    """
     return contador
 
 
@@ -1014,7 +1005,7 @@ def cpu1(lista_f, lista_p_f, nombre):
         return lista_f, lista_p_f, 2
 
 
-def cpu2(lista_f, lista_p_f,nombre):
+def cpu2(lista_f, lista_p_f, nombre):
     """
     Ejecuta el turno de la cpu 2
     - Agarra carta si tiene 15 o menos
@@ -1073,7 +1064,7 @@ def cpu4(lista_f, lista_p_f, nombre):
 
 
 def resultados(lista_j, lista_p_j, lista_f,
-               lista_p_f, puntos_j, puntos_f):
+               lista_p_f):
     """
     Revisa si alguno ganó o perdió y devuelve los puntos
     1 punto: 21 suave, cualquier combinación
@@ -1090,18 +1081,13 @@ def resultados(lista_j, lista_p_j, lista_f,
     victoria_j = 0  # Se usa para comprobar qué victoria tuvo
     victoria_f = 0
 
-    puntos_j_n = 0  # Mete los puntos nuevos en una variable distinta
-    puntos_f_n = 0  # antes de sumarlos para saber cuál ganó
-
     verificar_figuras = 0  # Para ver si cumple 5 menores
 
     if contar(lista_j) == 21:
-        puntos_j_n, victoria_j = resultados_aux(lista_j, lista_p_j,
-                                                puntos_j)
+        victoria_j = resultados_aux(lista_j, lista_p_j)
 
     if contar(lista_f) == 21:
-        puntos_f_n, victoria_f = resultados_aux(lista_f, lista_p_f,
-                                                puntos_f)
+        victoria_f = resultados_aux(lista_f, lista_p_f)
 
     if contar(lista_j) < 21:
         if len(lista_j) == 5:
@@ -1109,11 +1095,9 @@ def resultados(lista_j, lista_p_j, lista_f,
                 if type(lista_j[carta]) != str:
                     verificar_figuras += 1
 
-        if verificar_figuras == 5:
-            puntos_j_n = 2
+        if verificar_figuras == 5:  # 5 menores
             victoria_j = 2
         else:
-            puntos_j_n = 0
             victoria_j = 1
     verificar_figuras = 0
 
@@ -1124,10 +1108,8 @@ def resultados(lista_j, lista_p_j, lista_f,
                     verificar_figuras += 1
 
         if verificar_figuras == 5:
-            puntos += 2
             victoria_f = 2
         else:
-            puntos_f_n = 0
             victoria_f = 1
 
     if contar(lista_j) > 21:
@@ -1135,50 +1117,84 @@ def resultados(lista_j, lista_p_j, lista_f,
     if contar(lista_f) > 21:
         victoria_f = 0
 
-    puntos_f += puntos_f_n
-    puntos_j += puntos_j_n
-
-    return puntos_j, puntos_f, victoria_j, victoria_f
+    return victoria_j, victoria_f
 
 
-def resultados_aux(lista, lista_p, puntos):
+def resultados_aux(lista, lista_p):
     """
     Función auxiliar de resultados para que no quede gigante
     """
     aces = 0
     verificar_figuras = 0
 
-    if lista[0:3] == [7, 7, 7]:
-        puntos += 5
-        return puntos, 6
+    if lista[0:3] == [7, 7, 7]:  # triple 7
+        return 6
 
     for carta in range(0, len(lista) - 1):
         if lista[carta] == 1 or lista[carta] == 11:
             aces += 1
 
-    if aces == 2:
-        puntos += 4
-        return puntos, 5
+    if aces == 2:  # Doble as
+        return 5
 
-    if lista[0] == 5 and lista_p[0] == "diamantes":
-        puntos += 3
-        return puntos, 4
+    elif lista[0] == 5 and lista_p[0] == "diamantes":  # 5 diamantes
 
-    if len(lista) == 5:
+        return 4
+
+    elif len(lista) == 5:  # 5 menores
         for carta in range(0, len(lista)):
             if type(lista[carta]) != str:
                 verificar_figuras += 1
 
         if verificar_figuras == 5:
-            puntos += 2
-            return puntos, 2
 
-    if len(lista) == 2:
-        puntos += 1
-        return puntos, 3
+            return 2
 
-    puntos += 1
-    return puntos, 8
+    elif len(lista) == 2:  # black jack
+        return 3
+
+    return 8
+
+
+def sumar(puntos_j, puntos_f, victoria_j, victoria_f):
+    """
+    Suma los puntos
+    """
+    if victoria_f == 0 or victoria_f == 1:
+        puntos_f = puntos_f
+    elif victoria_f == 2:
+        puntos_f += 1
+    elif victoria_f == 3:
+        puntos_f += 1
+    elif victoria_f == 4:
+        puntos_f += 3
+    elif victoria_f == 5:
+        puntos_f += 4
+    elif victoria_f == 6:
+        puntos_f += 5
+    elif victoria_f == 8:
+        puntos_f += 1
+    else:
+        print("Error03")
+
+    if victoria_j == 0 or victoria_j == 1:
+        puntos_j = puntos_j
+    elif victoria_j == 2:
+        puntos_j += 1
+    elif victoria_j == 3:
+        puntos_j += 1
+    elif victoria_j == 4:
+        puntos_j += 3
+    elif victoria_j == 5:
+        puntos_j += 4
+    elif victoria_j == 6:
+        puntos_j += 5
+    elif victoria_j == 8:
+        puntos_j += 1
+    else:
+        print("Error03")
+
+    return puntos_j, puntos_f
 
 
 def imprimir_finales(lista_j, lista_p_j, lista_f, lista_p_f, nombre):
@@ -1296,10 +1312,10 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
 
     puntos_f = 0
     puntos_j = 0
-
+    nombre, apellido = nombres()
     jugar = True
     while jugar:
-        nombre,apellido = nombres()
+
         leer_2(f"Su oponente será {nombre} {apellido}.\nSe repartieron las " +
                "primeras cartas boca abajo.\n")
         número = 1  # Se usa para imprimir la última carta de la lista
@@ -1337,7 +1353,8 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
 
             lista_j, lista_p_j, respuesta, número_n = turno_jugador(
                 lista_j, lista_p_j, número)
-            lista_f, lista_p_f, respuesta_f = perfil(lista_f, lista_p_f,nombre)
+            lista_f, lista_p_f, respuesta_f = perfil(
+                lista_f, lista_p_f, nombre)
 
             if respuesta == "1":
                 número = número_n
@@ -1357,9 +1374,9 @@ def veintiuno(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
 
         leer_2(f"Las cartas de {nombre} suman {contar(lista_f)}")
 
-        puntos_j, puntos_f, victoria_j, victoria_f = resultados(
-            lista_j, lista_p_j, lista_f, lista_p_f, puntos_j, puntos_f)
-
+        victoria_j, victoria_f = resultados(
+            lista_j, lista_p_j, lista_f, lista_p_f)
+        puntos_j, puntos_f = sumar(puntos_j, puntos_f, victoria_j, victoria_f)
         puntos_f, puntos_j = mensaje_victoria(
             victoria_j, victoria_f, puntos_j, puntos_f, nombre)
 
@@ -1396,14 +1413,14 @@ def transición(número):
         leer("OYE...\n")
         time.sleep(1)
         leer("\n[Despiertas confundido]\n[Sientes que tuviste una" +
-               " pesadilla]\n")
+             " pesadilla]\n")
 
         input('\nPRESIONA ENTER PARA CONTINUAR\n')
 
         leer("\nAmigo, ¿todo bien?\n" +
-               "Capturamos a un fascista en Alajuela y caiste muerto" +
-               " por el cansansio\nEstábamos a punto de jugar unas " +
-               "partidas de 21.\n")
+             "Capturamos a un fascista en Alajuela y caiste muerto" +
+             " por el cansansio\nEstábamos a punto de jugar unas " +
+             "partidas de 21.\n")
 
         loop = True
         while loop:
@@ -1411,7 +1428,7 @@ def transición(número):
 
             if jugar21 == '1':
                 leer("\n\nGenial, por hoy tú serás la casa\n" +
-                       "Aquí vamos\n")
+                     "Aquí vamos\n")
                 veintiuno()
                 loop = False
 
@@ -1428,3 +1445,4 @@ def transición(número):
 
 
 anarquistas_contra_fascistas()
+
