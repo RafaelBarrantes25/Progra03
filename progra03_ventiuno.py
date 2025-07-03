@@ -364,40 +364,20 @@ def mensaje_victoria(victoria_j, victoria_f, puntos_j, puntos_f):
 
     return puntos_f, puntos_j
 
-
-"""
-H
-A
-C
-E
-R
-
-L
-A
-
-F
-U
-N
-C
-I
-Ó
-N
-
-F
-I
-N
-
-D
-E
-L
-
-J
-U
-E
-G
-O
-"""            
-
+def fin_del_juego(puntos_j,puntos_f):
+    """
+    Imprime el mensaje al terminar el juego
+    E: los puntos de los dos jugadores
+    S: el mensaje de fin del juegp
+    R: no hay
+    """      
+    if puntos_f > puntos_j:
+        print(f"Los anarquistas ganaron con {puntos_j} puntos.\nLos fascistas perdieron con {puntos_f} puntos.")
+    elif puntos_f == puntos_j:
+        print(f"Ambos bandos tuvieron {puntos_j} puntos. Quedaron en un empate.")
+    else:
+        print(
+            f"Los fascistas ganaron con {puntos_f} puntos.\nLos anarquistas perdieron con {puntos_j} puntos.")
 
 def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     """
@@ -409,8 +389,8 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
     puntos_f = 0
     puntos_j = 0
     número = 1
-
-    while True:
+    jugar = True
+    while jugar:
         # Se usa para imprimir la última carta de la lista
         lista_j = []
         lista_f = []
@@ -478,9 +458,10 @@ def juego(lista_f=[], lista_p_f=[], lista_j=[], lista_p_j=[]):
             if volver_a_jugar == "1":
                 loop = False
                 break
-            elif volver_a_jugar == "2":
-
+            elif volver_a_jugar == "2": 
+                loop = False
                 fin_del_juego(puntos_j,puntos_f)
+                jugar = False
             else:
                 print("Esa no es una opción.")
         
