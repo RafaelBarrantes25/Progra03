@@ -626,6 +626,7 @@ def final(bando):
 
             else:
                 leer("\nLa verdad no te entendí, ¿me lo repites?\n")
+                jugar21 = ''
 
     elif bando == 'fascista':
         time.sleep(1)
